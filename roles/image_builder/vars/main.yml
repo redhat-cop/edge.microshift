@@ -1,2 +1,14 @@
 ---
 # vars file for image_builder
+builder_blueprint_name: microshift
+builder_blueprint_src_path: "/tmp/microshift.toml"
+compose_type: edge-commit
+pubkey_file: "~/.ssh/id_rsa.pub"
+builder_compose_customizations:
+  user:
+    name: "edge"
+    description: "test user"
+    password: "openshift"
+    key: "{{ pubkey_file }}"
+    groups: '["users", "wheel"]'
+
