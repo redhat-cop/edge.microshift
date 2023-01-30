@@ -1,0 +1,10 @@
+---
+# tasks file for image_builder
+- name: Setup osbuild server
+  ansible.builtin.import_role:
+    name: infra.osbuild.setup_server
+
+- name: Running osbuild image builder
+  ansible.builtin.import_role:
+    name: infra.osbuild.builder
+
