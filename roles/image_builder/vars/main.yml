@@ -11,4 +11,3 @@ builder_compose_customizations:
     password: "openshift"
     key: "{{ pubkey_file }}"
     groups: '["users", "wheel"]'
-

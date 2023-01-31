@@ -7,4 +7,3 @@
 - name: Running osbuild image builder
   ansible.builtin.import_role:
     name: infra.osbuild.builder
-
