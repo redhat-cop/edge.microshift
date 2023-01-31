@@ -1,10 +1,10 @@
 ---
 # vars file for image_builder
-builder_blueprint_name: microshift
-builder_blueprint_src_path: "/tmp/microshift.toml"
-compose_type: edge-commit
-pubkey_file: "~/.ssh/id_rsa.pub"
-builder_compose_customizations:
+microshift_image_blueprint_name: microshift
+microshift_image_blueprint_src_path: "/tmp/microshift.toml"
+microshift_image_compose_type: edge-commit
+microshift_image_pubkey_file: "~/.ssh/id_rsa.pub"
+microshift_image_compose_customizations:
   user:
     name: "edge"
     description: "test user"
