@@ -1,0 +1,21 @@
+---
+galaxy_info:
+  role_name: "image_builder"
+  standalone: false
+  company: "Red Hat"
+  description: "Build an operating system image using osbuild composer with microshift and depencies installed"
+  author: Ansible Edge Working Group
+  license: "GPL-3.0-or-later"
+  min_ansible_version: "2.12"
+  platforms:
+    - name: "EL"
+      versions:
+        - "8"
+  galaxy_tags:
+    - "image"
+    - "build"
+    - "os"
+    - "microshift"
+    - "openshift"
+    - "kubernetes"
+dependencies: []

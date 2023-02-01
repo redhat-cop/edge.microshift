@@ -1,0 +1,9 @@
+---
+- name: Run microshift image builder role
+  become: true
+  hosts: all
+  gather_facts: true
+  tasks:
+    - name: Create image with microshift
+      ansible.builtin.import_role:
+        name: edge.microshift.image_builder

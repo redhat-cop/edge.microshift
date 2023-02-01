@@ -1,0 +1,18 @@
+---
+# tasks file for image_builder
+- name: Setup osbuild server
+  ansible.builtin.import_role:
+    name: infra.osbuild.setup_server
+  vars:
+    builder_custom_repos: "{{ microshift_image_custom_repos }}"
+    builder_compose_pkgs: "{{ microshift_image_compose_pkgs }}"
+
+- name: Running osbuild image builder
+  ansible.builtin.import_role:
+    name: infra.osbuild.builder
+  vars:
+    builder_blueprint_name: "{{ microshift_image_blueprint_name }}"
+    builder_blueprint_src_path: "{{ microshift_image_blueprint_src_path }}"
+    compose_type: "{{ microshift_image_compose_type }}"
+    pubkey_file: "{{ microshift_image_pubkey_file }}"
+    builder_compose_customizations: "{{ microshift_image_compose_customizations }}"
