@@ -11,19 +11,19 @@ None
 Role Variables
 --------------
 
-### builder_blueprint_name
+### microshift_image_blueprint_name
 
 Type: string
 Required: false
 
 This is the name of the [osbuild blueprint](https://www.osbuild.org/guides/blueprint-reference/blueprint-reference.html?highlight=distro#distribution-selection-with-blueprints)
 to use. The blueprint will be auto generated based on the contents of the 
-`builder_compose_customizations` role variable. In the event an of an [rpm-ostree](https://rpm-ostree.readthedocs.io/en/stable/)
-based compose type specified by the `builder_compose_type` role variable, the
+`microshift_image_compose_customizations` role variable. In the event an of an [rpm-ostree](https://rpm-ostree.readthedocs.io/en/stable/)
+based compose type specified by the `microshift_image_compose_type` role variable, the
 blueprint name defined in this variable will use used to define the resulting [ostree](https://ostreedev.github.io/ostree/)
 repository.
 
-### builder_blueprint_src_path
+### microshift_image_blueprint_src_path
 
 Type: string
 Required: false
@@ -32,7 +32,7 @@ This is the path to a location on the osbuild server that the generated
 blueprint should be stored at and used as the source content for the osbuild
 compose build.
 
-### compose_type
+### microshift_image_compose_type
 
 Type: string
 Required: false
@@ -46,7 +46,7 @@ For CentOS Stream and Fedora, you will need to reference the output of the
 `composer-cli compose types` command on the osbuild server (this can also be 
 done on RHEL if preferred).
 
-### pubkey_file
+### microshift_image_pubkey_file
 
 Type: string
 Required: false
@@ -57,11 +57,11 @@ with the resulting build media.
 
 Example:
 ```yaml
-builder_pub_key: ~/.ssh/id_rsa.pub
+microshift_image_pubkey_file: ~/.ssh/id_rsa.pub
 ```
 
 
-### builder_compose_customizations:
+### microshift_image_compose_customizations:
 
 Type: dict
 Required: false
@@ -71,12 +71,12 @@ This variable is the YAML dict expression of
 
 Example:
 ```yaml
-builder_compose_customizations:
+microshift_image_compose_customizations:
   user:
     name: "testuser"
     description: "test user"
     password: "testpassword"
-    key: "{{ builder_pub_key }}"
+    key: "{{ microshift_image_pubkey_file }}"
     groups: '["users", "wheel"]'
   kernel:
     append: "nomst=force"
