@@ -87,6 +87,37 @@ microshift_image_compose_customizations:
     
 ```
 
+
+### microshift_image_firewall_options
+
+Type: complex
+Required: false
+
+Custom list of firewall options
+
+Each list entry is a [YAML dictionary](https://docs.ansible.com/ansible/latest/reference_appendices/YAMLSyntax.html)
+type and has the following attributes:
+
+| Variable Name | Type                              | Required  | Default Value |
+|---------------|-----------------------------------|-----------|---------------|
+| zone          | string                            | **Yes**   | n/a           |
+| source        | string                            | **Yes**   | n/a           |
+| port          | string                            | **Yes**   | n/a           |
+
+NOTES:
+
+Only either source or port can be used at a time.
+
+Example:
+
+```yaml
+microshift_image_firewall_options:
+  - zone: trusted
+    source: 169.254.169.1
+  - zone: trusted
+    port: 443/tcp
+```
+
 Dependencies
 ------------
 

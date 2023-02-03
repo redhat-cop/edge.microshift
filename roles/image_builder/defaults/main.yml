@@ -19,3 +19,11 @@ microshift_image_custom_repos:
 microshift_image_compose_pkgs:
   - microshift
   - NetworkManager-wifi
+  - firewalld
+microshift_image_firewall_options:
+  # network_access_to_pods (mandatory)
+  - zone: trusted
+    source: 10.42.0.0/16
+  # network_access_to_services (mandatory)
+  - zone: trusted
+    source: 169.254.169.1
