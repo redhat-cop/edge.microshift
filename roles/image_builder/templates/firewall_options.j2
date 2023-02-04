@@ -1,0 +1,3 @@
+{% for option in microshift_image_firewall_options %}
+firewall-offline-cmd --zone={{ option.zone }} {{ '--add-source' if option.source is defined else '--add-port'}}={{option.source if option.source is defined else option.port}}
+{% endfor %}
