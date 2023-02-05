@@ -7,6 +7,43 @@
     builder_custom_repos: "{{ microshift_image_custom_repos }}"
     builder_compose_pkgs: "{{ microshift_image_compose_pkgs }}"
 
+- name: enable microshift rpm repos on host
+  ansible.builtin.command:
+    cmd: "/usr/bin/subscription-manager"
+    args:
+      - "--enable rhocp-4.12-for-rhel-8-{{ ansible_architecture }}-rpms"
+      - "--enable fast-datapath-for-rhel-8-{{ ansible_architecture }}-rpms"
+
+- name: install reposync and createrepo from yum-utils
+  ansible.builtin.dnf:
+    name:
+      - yum-utils
+      - createrepo
+    state: present
+
+- name: sync microshift packages to the host
+  ansible.builtin.command:
+    cmd: "/usr/bin/reposync"
+    args:
+      - "--arch={{ ansible_architecture }}"
+      - "--arch=noarch"
+      - "--gpgcheck"
+      - "--download-path REPO_PATH=/var/repos/microshift-local"
+      - "--repo=rhocp-4.12-for-rhel-8-{{ ansible_architecture }}-rpms"
+      - "--repo=fast-datapath-for-rhel-8-{{ ansible_architecture }}-rpms"
+
+- name: remove coreos packages to avoid conflicts
+  ansible.builtin.command:
+    cmd: "/usr/bin/find"
+    args:
+      - "${REPO_PATH}/microshift-local -name \*coreos\* -exec rm -f {} \;"
+
+- name: create local rpm repo
+  ansible.builtin.command:
+    cmd: "/usr/bin/createrepo"
+    args:
+      - "${REPO_PATH}/microshift-local"
+
 - name: Running osbuild image builder
   ansible.builtin.import_role:
     name: infra.osbuild.builder

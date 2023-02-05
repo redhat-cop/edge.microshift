@@ -16,6 +16,11 @@ microshift_image_custom_repos:
     type: yum-baseurl
     check_ssl: true
     check_gpg: false
+  - name: microshift-local
+    base_url: file:///${REPO_PATH}/microshift-local/
+    type: yum-baseurl
+    check_ssl: false
+    check_gpg: false
 microshift_image_compose_pkgs:
   - microshift
   - NetworkManager-wifi
