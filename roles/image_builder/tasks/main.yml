@@ -1,5 +1,5 @@
 ---
-# tasks file for image_builder
+# # tasks file for image_builder
 - name: Setup osbuild server
   ansible.builtin.import_role:
     name: infra.osbuild.setup_server
@@ -8,11 +8,11 @@
     builder_compose_pkgs: "{{ microshift_image_compose_pkgs }}"
 
 - name: enable microshift rpm repos on host
-  ansible.builtin.command:
-    cmd: "/usr/bin/subscription-manager"
-    args:
-      - "--enable rhocp-4.12-for-rhel-8-{{ ansible_architecture }}-rpms"
-      - "--enable fast-datapath-for-rhel-8-{{ ansible_architecture }}-rpms"
+  community.general.rhsm_repository:
+    name:
+      - rhocp-4.12-for-rhel-8-{{ ansible_architecture }}-rpms 
+      - fast-datapath-for-rhel-8-{{ ansible_architecture }}-rpms
+    state: enabled
 
 - name: install reposync and createrepo from yum-utils
   ansible.builtin.dnf:
@@ -23,26 +23,15 @@
 
 - name: sync microshift packages to the host
   ansible.builtin.command:
-    cmd: "/usr/bin/reposync"
-    args:
-      - "--arch={{ ansible_architecture }}"
-      - "--arch=noarch"
-      - "--gpgcheck"
-      - "--download-path REPO_PATH=/var/repos/microshift-local"
-      - "--repo=rhocp-4.12-for-rhel-8-{{ ansible_architecture }}-rpms"
-      - "--repo=fast-datapath-for-rhel-8-{{ ansible_architecture }}-rpms"
+    cmd: "/usr/bin/reposync --arch={{ ansible_architecture }} --arch=noarch --gpgcheck --download-path REPO_PATH=/var/repos/microshift-local --repo=rhocp-4.12-for-rhel-8-{{ ansible_architecture }}-rpms --repo=fast-datapath-for-rhel-8-{{ ansible_architecture }}-rpms"
 
 - name: remove coreos packages to avoid conflicts
   ansible.builtin.command:
-    cmd: "/usr/bin/find"
-    args:
-      - "${REPO_PATH}/microshift-local -name \*coreos\* -exec rm -f {} \;"
+    cmd: "/usr/bin/find /var/repos/microshift-local -name \\*coreos\\* -exec rm -f {} \\;"
 
 - name: create local rpm repo
   ansible.builtin.command:
-    cmd: "/usr/bin/createrepo"
-    args:
-      - "${REPO_PATH}/microshift-local"
+    cmd: "/usr/bin/createrepo /var/repos/microshift-local"
 
 - name: Running osbuild image builder
   ansible.builtin.import_role:
