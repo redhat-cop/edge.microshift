@@ -1,0 +1,7 @@
+cat > /etc/microshift/ovn.yaml <<EOF
+ovsInit:
+  disableOVSInit: false
+  gatewayInterface: "{{ microshift_image_gateway_interface }}"
+  externalGatewayInterface: "{{ microshift_image_external_gateway_interface }}"
+mtu: {{ microshift_image_mtu }}
+EOF

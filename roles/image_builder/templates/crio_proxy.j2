@@ -1,0 +1,6 @@
+mkdir /etc/systemd/system/crio.service.d/
+cat > /etc/systemd/system/crio.service.d/00-proxy.conf <<EOF
+Environment=NO_PROXY="localhost,127.0.0.
+Environment=HTTP_PROXY="http://{{ microshift_image_crio_proxy.user }}:{{ microshift_image_crio_proxy.password }}@{{ microshift_image_crio_proxy.server }}:{{ microshift_image_crio_proxy.port }}/"
+Environment=HTTPS_PROXY="http://{{ microshift_image_crio_proxy.user }}:{{ microshift_image_crio_proxy.password }}@{{ microshift_image_crio_proxy.server }}:{{ microshift_image_crio_proxy.port }}/"
+EOF
