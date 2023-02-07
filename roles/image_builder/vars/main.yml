@@ -11,11 +11,3 @@ microshift_image_compose_customizations:
     password: "openshift"
     key: "{{ pubkey_file }}"
     groups: '["users", "wheel"]'
-# microshift_image_gateway_interface: "kk"
-# microshift_image_external_gateway_interface: "kjdk"
-# microshift_image_mtu: 1400
-# microshift_image_crio_proxy:
-#   user: user1
-#   password: pass1
-#   server: 192.183.3.333
-#   port: 123
