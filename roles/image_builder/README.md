@@ -23,7 +23,6 @@ based compose type specified by the `microshift_image_compose_type` role variabl
 blueprint name defined in this variable will use used to define the resulting [ostree](https://ostreedev.github.io/ostree/)
 repository.
 
-
 ### microshift_image_blueprint_src_path
 
 Type: string
@@ -32,7 +31,6 @@ Required: false
 This is the path to a location on the osbuild server that the generated
 blueprint should be stored at and used as the source content for the osbuild
 compose build.
-
 
 ### microshift_image_compose_type
 
@@ -48,7 +46,6 @@ For CentOS Stream and Fedora, you will need to reference the output of the
 `composer-cli compose types` command on the osbuild server (this can also be 
 done on RHEL if preferred).
 
-
 ### microshift_image_pubkey_file
 
 Type: string
@@ -62,7 +59,6 @@ Example:
 ```yaml
 microshift_image_pubkey_file: ~/.ssh/id_rsa.pub
 ```
-
 
 ### microshift_image_compose_customizations:
 
@@ -89,7 +85,6 @@ microshift_image_compose_customizations:
     enabled: ["ssh", "https"]
     
 ```
-
 
 ### microshift_image_firewall_options
 
@@ -121,7 +116,6 @@ microshift_image_firewall_options:
     port: 443/tcp
 ```
 
-
 ### image_builder_lvms_pvc_name
 
 Type: string
@@ -135,7 +129,6 @@ Example:
 image_builder_lvms_pvc_name: my-lv-pvc
 ```
 
-
 ### image_builder_lvms_pvc_access_modes
 
 Type: string
@@ -147,7 +140,6 @@ Example:
 ```yaml
 image_builder_lvms_pvc_access_modes: ReadWriteOnce
 ```
-
 
 ### image_builder_lvms_pvc_storage
 
@@ -161,7 +153,6 @@ Example:
 image_builder_lvms_pvc_storage: 1G
 ```
 
-
 ### image_builder_lvms_pod_name
 
 Type: string
@@ -173,7 +164,6 @@ Example:
 ```yaml
 image_builder_lvms_pod_name: my-pod
 ```
-
 
 ### image_builder_lvms_pod_containers
 
@@ -194,7 +184,6 @@ image_builder_lvms_pod_containers:
         name: my-volume
 ```
 
-
 ### image_builder_lvms_pod_volumes
 
 Type: string
@@ -209,7 +198,6 @@ image_builder_lvms_pod_volumes:
     claimName: my-lv-pvc
 ```
 
-
 ### microshift_image_gateway_interface
 
 Type: string
@@ -222,7 +210,6 @@ Example:
 microshift_image_gateway_interface: eth0
 ```
 
-
 ### microshift_image_external_gateway_interface
 
 Type: string
@@ -234,7 +221,6 @@ Example:
 ```yaml
 microshift_image_external_gateway_interface: eth1
 ```
-
 
 ### microshift_image_mtu
 
@@ -249,7 +235,6 @@ Example:
 ```yaml
 microshift_image_mtu: 1400
 ```
-
 
 ### microshift_image_crio_proxy
 
@@ -281,7 +266,6 @@ microshift_image_crio_proxy:
   server: 192.183.3.333
   port: 123
 ```
-
 
 Dependencies
 ------------
