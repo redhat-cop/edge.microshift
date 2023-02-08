@@ -118,6 +118,73 @@ microshift_image_firewall_options:
     port: 443/tcp
 ```
 
+### microshift_image_gateway_interface
+
+Type: string
+Required: false
+
+Ingress that is the API gateway 
+
+Example:
+```yaml
+microshift_image_gateway_interface: eth0
+```
+
+### microshift_image_external_gateway_interface
+
+Type: string
+Required: false
+
+Ingress routing external traffic to your services and pods inside the node
+
+Example:
+```yaml
+microshift_image_external_gateway_interface: eth1
+```
+
+### microshift_image_mtu
+
+Type: string
+Required: false
+
+MTU value used for the pods
+
+Example:
+```yaml
+microshift_image_mtu: 1400
+```
+
+### microshift_image_crio_proxy
+
+Type: complex
+Required: false
+
+Options for deploying a microshift cluster behind an http(s) proxy
+
+microshift_image_crio_proxy is a [YAML dictionary](https://docs.ansible.com/ansible/latest/reference_appendices/YAMLSyntax.html)
+type and has the following attributes:
+
+| Variable Name | Type                              | Required  | Default Value |
+|---------------|-----------------------------------|-----------|---------------|
+| user          | string                            | **Yes**   | n/a           |
+| password      | string                            | **Yes**   | n/a           |
+| server        | string                            | **Yes**   | n/a           |
+| port          | string                            | **Yes**   | n/a           |
+
+NOTES:
+
+Using this option will inject credentials into kickstart that is hosted via http
+
+Example:
+
+```yaml
+microshift_image_firewall_options:
+  - zone: trusted
+    source: 169.254.169.1
+  - zone: trusted
+    port: 443/tcp
+```
+
 Dependencies
 ------------
 
