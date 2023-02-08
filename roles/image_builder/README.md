@@ -118,6 +118,88 @@ microshift_image_firewall_options:
     port: 443/tcp
 ```
 
+### image_builder_lvms_pvc_name
+
+Type: string
+Required: false
+
+Name used for PVC metadata
+
+Example:
+
+```yaml
+image_builder_lvms_pvc_name: my-lv-pvc
+```
+
+### image_builder_lvms_pvc_access_modes
+
+Type: string
+Required: false
+
+Access mode of the PVC
+
+Example:
+```yaml
+image_builder_lvms_pvc_access_modes: ReadWriteOnce
+```
+
+### image_builder_lvms_pvc_storage
+
+Type: string
+Required: false
+
+PVC storage size
+
+Example:
+```yaml
+image_builder_lvms_pvc_storage: 1G
+```
+
+### image_builder_lvms_pod_name
+
+Type: string
+Required: false
+
+Name used for pod metadata
+
+Example:
+```yaml
+image_builder_lvms_pod_name: my-pod
+```
+
+### image_builder_lvms_pod_containers
+
+Type: dict
+Required: false
+
+Containers spec
+
+Example:
+```yaml
+image_builder_lvms_pod_containers:
+    name: nginx
+    image: nginx
+    command: '["/usr/bin/sh". "-c"]'
+    args: '["sleep", "1h"]'
+    volumeMounts:
+        mountPath: /mnt
+        name: my-volume
+```
+
+### image_builder_lvms_pod_volumes
+
+Type: string
+Required: false
+
+Volumes spec
+
+Example:
+```yaml
+image_builder_lvms_pod_volumes:
+    name: my-volume
+    claimName: my-lv-pvc
+```
+
 Dependencies
 ------------
 
