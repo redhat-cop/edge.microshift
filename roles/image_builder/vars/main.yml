@@ -15,6 +15,8 @@ microshift_image_compose_customizations:
 microshift_kickstart_post:
   - "{{ lookup('ansible.builtin.template', '../templates/firewall_options.j2') }}"
   - "{{ lookup('ansible.builtin.template', '../templates/lvms_setup.j2') }}"
+  - "{{ microshift_image_ovn_options_template | default(omit) }}"
+  - "{{ microshift_image_crio_proxy_template | default(omit) }}"
 microshift_kickstart_options:
   - lang en_US.UTF-8
   - keyboard us
