@@ -1,0 +1,30 @@
+cat <<'EOF' | oc apply -f -
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: {{ image_builder_lvms_pvc_name }} 
+spec:
+  accessModes:
+  - {{ image_builder_lvms_pvc_access_modes }}
+  resources:
+    requests:
+      storage: {{ image_builder_lvms_pvc_storage }}
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: {{ image_builder_lvms_pod_name }}
+spec:
+  containers:
+  - name: {{ image_builder_lvms_pod_containers.name }}
+    image: {{ image_builder_lvms_pod_containers.image }}
+    command: {{ image_builder_lvms_pod_containers.command }}
+    args: {{ image_builder_lvms_pod_containers.args }}
+    volumeMounts:
+    - mountPath: {{ image_builder_lvms_pod_containers.volumeMounts.mountPath }}
+      name: {{ image_builder_lvms_pod_containers.volumeMounts.name }}
+  volumes:
+    - name: {{ image_builder_lvms_pod_volumes.name }}
+      persistentVolumeClaim:
+        claimName: {{ image_builder_lvms_pod_volumes.claimName }}
+EOF

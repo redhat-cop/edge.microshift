@@ -26,7 +26,5 @@
     builder_compose_type: "{{ microshift_image_compose_type }}"
     pubkey_file: "{{ microshift_image_pubkey_file }}"
     builder_compose_customizations: "{{ microshift_image_compose_customizations }}"
-    builder_kickstart_post: 
-      - "{{ lookup('ansible.builtin.template', '../templates/firewall_options.j2') }}"
-      - "{{ microshift_image_ovn_options_template | default(omit) }}"
-      - "{{ microshift_image_crio_proxy_template | default(omit) }}"
+    builder_kickstart_post: "{{ microshift_kickstart_post }}"
+    builder_kickstart_options: "{{ microshift_kickstart_options }}"

@@ -60,7 +60,6 @@ Example:
 microshift_image_pubkey_file: ~/.ssh/id_rsa.pub
 ```
 
-
 ### microshift_image_compose_customizations:
 
 Type: dict
@@ -86,7 +85,6 @@ microshift_image_compose_customizations:
     enabled: ["ssh", "https"]
     
 ```
-
 
 ### microshift_image_firewall_options
 
@@ -118,6 +116,88 @@ microshift_image_firewall_options:
     port: 443/tcp
 ```
 
+### image_builder_lvms_pvc_name
+
+Type: string
+Required: false
+
+Name used for PVC metadata
+
+Example:
+
+```yaml
+image_builder_lvms_pvc_name: my-lv-pvc
+```
+
+### image_builder_lvms_pvc_access_modes
+
+Type: string
+Required: false
+
+Access mode of the PVC
+
+Example:
+```yaml
+image_builder_lvms_pvc_access_modes: ReadWriteOnce
+```
+
+### image_builder_lvms_pvc_storage
+
+Type: string
+Required: false
+
+PVC storage size
+
+Example:
+```yaml
+image_builder_lvms_pvc_storage: 1G
+```
+
+### image_builder_lvms_pod_name
+
+Type: string
+Required: false
+
+Name used for pod metadata
+
+Example:
+```yaml
+image_builder_lvms_pod_name: my-pod
+```
+
+### image_builder_lvms_pod_containers
+
+Type: dict
+Required: false
+
+Containers spec
+
+Example:
+```yaml
+image_builder_lvms_pod_containers:
+    name: nginx
+    image: nginx
+    command: '["/usr/bin/sh". "-c"]'
+    args: '["sleep", "1h"]'
+    volumeMounts:
+        mountPath: /mnt
+        name: my-volume
+```
+
+### image_builder_lvms_pod_volumes
+
+Type: string
+Required: false
+
+Volumes spec
+
+Example:
+```yaml
+image_builder_lvms_pod_volumes:
+    name: my-volume
+    claimName: my-lv-pvc
+```
+
 ### microshift_image_gateway_interface
 
 Type: string
@@ -147,6 +227,8 @@ microshift_image_external_gateway_interface: eth1
 Type: string
 Required: false
 
+
+
 MTU value used for the pods
 
 Example:
@@ -173,16 +255,16 @@ type and has the following attributes:
 
 NOTES:
 
-Using this option will inject credentials into kickstart that is hosted via http
+Using this option will inject credentials into kickstart that is exposed via http
 
 Example:
 
 ```yaml
-microshift_image_firewall_options:
-  - zone: trusted
-    source: 169.254.169.1
-  - zone: trusted
-    port: 443/tcp
+microshift_image_crio_proxy:
+  user: user1
+  password: pass1
+  server: 192.183.3.333
+  port: 123
 ```
 
 Dependencies

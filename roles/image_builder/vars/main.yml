@@ -11,3 +11,40 @@ microshift_image_compose_customizations:
     password: "openshift"
     key: "{{ pubkey_file }}"
     groups: '["users", "wheel"]'
+
+microshift_kickstart_post:
+  - "{{ lookup('ansible.builtin.template', '../templates/firewall_options.j2') }}"
+  - "{{ lookup('ansible.builtin.template', '../templates/lvms_setup.j2') }}"
+  - "{{ microshift_image_ovn_options_template | default(omit) }}"
+  - "{{ microshift_image_crio_proxy_template | default(omit) }}"
+microshift_kickstart_options:
+  - lang en_US.UTF-8
+  - keyboard us
+  - timezone Etc/UTC --isUtc
+  - text
+  - zerombr
+  - clearpart --all --initlabel
+  - part /boot/efi --fstype=efi --size=200
+  - part /boot --fstype=xfs --asprimary --size=800
+  - part swap --fstype=swap --recommended
+  - part pv.01 --grow
+  - volgroup rhel pv.01
+  - logvol / --vgname=rhel --fstype=xfs --size=10000 --name=root
+  - reboot
+  - user --name={{ builder_compose_customizations['user']['name'] }} {{ "--password" if builder_password is defined  }} {{ builder_password if builder_password is defined }} --group=wheel,user  # noqa yaml[line-length]
+  - ostreesetup --nogpg --osname=rhel --remote=edge --url=http://{{ ansible_host }}/{{ builder_blueprint_name }}/repo/ --ref={{ builder_blueprint_ref }}
+image_builder_lvms_pvc_name: my-lv-pvc
+image_builder_lvms_pvc_access_modes: ReadWriteOnce
+image_builder_lvms_pvc_storage: 1G
+image_builder_lvms_pod_name: my-pod
+image_builder_lvms_pod_containers:
+    name: nginx
+    image: nginx
+    command: '["/usr/bin/sh". "-c"]'
+    args: '["sleep", "1h"]'
+    volumeMounts:
+        mountPath: /mnt
+        name: my-volume
+image_builder_lvms_pod_volumes:
+    name: my-volume
+    claimName: my-lv-pvc
