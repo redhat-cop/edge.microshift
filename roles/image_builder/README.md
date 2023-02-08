@@ -23,6 +23,7 @@ based compose type specified by the `microshift_image_compose_type` role variabl
 blueprint name defined in this variable will use used to define the resulting [ostree](https://ostreedev.github.io/ostree/)
 repository.
 
+
 ### microshift_image_blueprint_src_path
 
 Type: string
@@ -31,6 +32,7 @@ Required: false
 This is the path to a location on the osbuild server that the generated
 blueprint should be stored at and used as the source content for the osbuild
 compose build.
+
 
 ### microshift_image_compose_type
 
@@ -45,6 +47,7 @@ For RHEL, the Red Hat Enterprise Linux Documentation Team publishes these and th
 For CentOS Stream and Fedora, you will need to reference the output of the 
 `composer-cli compose types` command on the osbuild server (this can also be 
 done on RHEL if preferred).
+
 
 ### microshift_image_pubkey_file
 
@@ -118,6 +121,7 @@ microshift_image_firewall_options:
     port: 443/tcp
 ```
 
+
 ### image_builder_lvms_pvc_name
 
 Type: string
@@ -131,6 +135,7 @@ Example:
 image_builder_lvms_pvc_name: my-lv-pvc
 ```
 
+
 ### image_builder_lvms_pvc_access_modes
 
 Type: string
@@ -142,6 +147,7 @@ Example:
 ```yaml
 image_builder_lvms_pvc_access_modes: ReadWriteOnce
 ```
+
 
 ### image_builder_lvms_pvc_storage
 
@@ -155,6 +161,7 @@ Example:
 image_builder_lvms_pvc_storage: 1G
 ```
 
+
 ### image_builder_lvms_pod_name
 
 Type: string
@@ -166,6 +173,7 @@ Example:
 ```yaml
 image_builder_lvms_pod_name: my-pod
 ```
+
 
 ### image_builder_lvms_pod_containers
 
@@ -186,6 +194,7 @@ image_builder_lvms_pod_containers:
         name: my-volume
 ```
 
+
 ### image_builder_lvms_pod_volumes
 
 Type: string
@@ -199,6 +208,80 @@ image_builder_lvms_pod_volumes:
     name: my-volume
     claimName: my-lv-pvc
 ```
+
+
+### microshift_image_gateway_interface
+
+Type: string
+Required: false
+
+Ingress that is the API gateway 
+
+Example:
+```yaml
+microshift_image_gateway_interface: eth0
+```
+
+
+### microshift_image_external_gateway_interface
+
+Type: string
+Required: false
+
+Ingress routing external traffic to your services and pods inside the node
+
+Example:
+```yaml
+microshift_image_external_gateway_interface: eth1
+```
+
+
+### microshift_image_mtu
+
+Type: string
+Required: false
+
+
+
+MTU value used for the pods
+
+Example:
+```yaml
+microshift_image_mtu: 1400
+```
+
+
+### microshift_image_crio_proxy
+
+Type: complex
+Required: false
+
+Options for deploying a microshift cluster behind an http(s) proxy
+
+microshift_image_crio_proxy is a [YAML dictionary](https://docs.ansible.com/ansible/latest/reference_appendices/YAMLSyntax.html)
+type and has the following attributes:
+
+| Variable Name | Type                              | Required  | Default Value |
+|---------------|-----------------------------------|-----------|---------------|
+| user          | string                            | **Yes**   | n/a           |
+| password      | string                            | **Yes**   | n/a           |
+| server        | string                            | **Yes**   | n/a           |
+| port          | string                            | **Yes**   | n/a           |
+
+NOTES:
+
+Using this option will inject credentials into kickstart that is exposed via http
+
+Example:
+
+```yaml
+microshift_image_crio_proxy:
+  user: user1
+  password: pass1
+  server: 192.183.3.333
+  port: 123
+```
+
 
 Dependencies
 ------------

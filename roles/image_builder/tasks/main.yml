@@ -7,6 +7,16 @@
     builder_custom_repos: "{{ microshift_image_custom_repos }}"
     builder_compose_pkgs: "{{ microshift_image_compose_pkgs }}"
 
+- name: check if ovn vars exist
+  when: microshift_image_gateway_interface is defined or microshift_image_external_gateway_interface is defined or microshift_image_mtu is defined
+  ansible.builtin.set_fact:
+    microshift_image_ovn_options_template: "{{ lookup('ansible.builtin.template', '../templates/ovn_options.j2') }}"
+
+- name: check if crio proxy is true
+  when: microshift_image_crio_proxy is defined
+  ansible.builtin.set_fact:
+    microshift_image_crio_proxy_template: "{{ lookup('ansible.builtin.template', '../templates/crio_proxy.j2') }}"
+
 - name: Running osbuild image builder
   ansible.builtin.import_role:
     name: infra.osbuild.builder
