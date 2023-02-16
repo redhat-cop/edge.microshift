@@ -285,7 +285,7 @@ Including an example of how to use your role (for instance, with variables passe
       tasks:
         - name: Create image with microshift
           ansible.builtin.import_role:
-            name: edge.microshift.microshift_image
+            name: edge.microshift.image_builder
 
 License
 -------
