@@ -34,11 +34,11 @@ microshift_kickstart_options:
   - network --bootproto=dhcp
   - user --name={{ builder_compose_customizations['user']['name'] }} {{ "--password" if builder_password is defined  }} {{ builder_password if builder_password is defined }} --group=wheel,user  # noqa yaml[line-length]
   - ostreesetup --nogpg --osname=rhel --remote=edge --url=http://{{ ansible_host }}/{{ builder_blueprint_name }}/repo/ --ref={{ builder_blueprint_ref }}
-image_builder_lvms_pvc_name: my-lv-pvc
-image_builder_lvms_pvc_access_modes: ReadWriteOnce
-image_builder_lvms_pvc_storage: 1G
-image_builder_lvms_pod_name: my-pod
-image_builder_lvms_pod_containers:
+microshift_image_lvms_pvc_name: my-lv-pvc
+microshift_image_lvms_pvc_access_modes: ReadWriteOnce
+microshift_image_lvms_pvc_storage: 1G
+microshift_image_lvms_pod_name: my-pod
+microshift_image_lvms_pod_containers:
     name: nginx
     image: nginx
     command: '["/usr/bin/sh". "-c"]'
@@ -46,6 +46,6 @@ image_builder_lvms_pod_containers:
     volumeMounts:
         mountPath: /mnt
         name: my-volume
-image_builder_lvms_pod_volumes:
+microshift_image_lvms_pod_volumes:
     name: my-volume
     claimName: my-lv-pvc
