@@ -9,7 +9,7 @@ microshift_image_compose_customizations:
     name: "edge"
     description: "test user"
     password: "openshift"
-    key: "{{ microshift_image_pubkey_file }}"
+    key: "{{ microshift_image_pubkey }}"
     groups: '["users", "wheel"]'
 
 microshift_kickstart_post:
