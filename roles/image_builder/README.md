@@ -116,7 +116,7 @@ microshift_image_firewall_options:
     port: 443/tcp
 ```
 
-### image_builder_lvms_pvc_name
+### microshift_image_lvms_pvc_name
 
 Type: string
 Required: false
@@ -126,10 +126,10 @@ Name used for PVC metadata
 Example:
 
 ```yaml
-image_builder_lvms_pvc_name: my-lv-pvc
+microshift_image_lvms_pvc_name: my-lv-pvc
 ```
 
-### image_builder_lvms_pvc_access_modes
+### microshift_image_lvms_pvc_access_modes
 
 Type: string
 Required: false
@@ -138,10 +138,10 @@ Access mode of the PVC
 
 Example:
 ```yaml
-image_builder_lvms_pvc_access_modes: ReadWriteOnce
+microshift_image_lvms_pvc_access_modes: ReadWriteOnce
 ```
 
-### image_builder_lvms_pvc_storage
+### microshift_image_lvms_pvc_storage
 
 Type: string
 Required: false
@@ -150,10 +150,10 @@ PVC storage size
 
 Example:
 ```yaml
-image_builder_lvms_pvc_storage: 1G
+microshift_image_lvms_pvc_storage: 1G
 ```
 
-### image_builder_lvms_pod_name
+### microshift_image_lvms_pod_name
 
 Type: string
 Required: false
@@ -162,10 +162,10 @@ Name used for pod metadata
 
 Example:
 ```yaml
-image_builder_lvms_pod_name: my-pod
+microshift_image_lvms_pod_name: my-pod
 ```
 
-### image_builder_lvms_pod_containers
+### microshift_image_lvms_pod_containers
 
 Type: dict
 Required: false
@@ -174,7 +174,7 @@ Containers spec
 
 Example:
 ```yaml
-image_builder_lvms_pod_containers:
+microshift_image_lvms_pod_containers:
     name: nginx
     image: nginx
     command: '["/usr/bin/sh". "-c"]'
@@ -184,7 +184,7 @@ image_builder_lvms_pod_containers:
         name: my-volume
 ```
 
-### image_builder_lvms_pod_volumes
+### microshift_image_lvms_pod_volumes
 
 Type: string
 Required: false
@@ -193,7 +193,7 @@ Volumes spec
 
 Example:
 ```yaml
-image_builder_lvms_pod_volumes:
+microshift_image_lvms_pod_volumes:
     name: my-volume
     claimName: my-lv-pvc
 ```
@@ -285,7 +285,7 @@ Including an example of how to use your role (for instance, with variables passe
       tasks:
         - name: Create image with microshift
           ansible.builtin.import_role:
-            name: edge.microshift.image_builder
+            name: edge.microshift.microshift_image
 
 License
 -------

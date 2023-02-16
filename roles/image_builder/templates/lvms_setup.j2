@@ -2,29 +2,29 @@ cat <<'EOF' | oc apply -f -
 kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
-  name: {{ image_builder_lvms_pvc_name }} 
+  name: {{ microshift_image_lvms_pvc_name }} 
 spec:
   accessModes:
-  - {{ image_builder_lvms_pvc_access_modes }}
+  - {{ microshift_image_lvms_pvc_access_modes }}
   resources:
     requests:
-      storage: {{ image_builder_lvms_pvc_storage }}
+      storage: {{ microshift_image_lvms_pvc_storage }}
 ---
 apiVersion: v1
 kind: Pod
 metadata:
-  name: {{ image_builder_lvms_pod_name }}
+  name: {{ microshift_image_lvms_pod_name }}
 spec:
   containers:
-  - name: {{ image_builder_lvms_pod_containers.name }}
-    image: {{ image_builder_lvms_pod_containers.image }}
-    command: {{ image_builder_lvms_pod_containers.command }}
-    args: {{ image_builder_lvms_pod_containers.args }}
+  - name: {{ microshift_image_lvms_pod_containers.name }}
+    image: {{ microshift_image_lvms_pod_containers.image }}
+    command: {{ microshift_image_lvms_pod_containers.command }}
+    args: {{ microshift_image_lvms_pod_containers.args }}
     volumeMounts:
-    - mountPath: {{ image_builder_lvms_pod_containers.volumeMounts.mountPath }}
-      name: {{ image_builder_lvms_pod_containers.volumeMounts.name }}
+    - mountPath: {{ microshift_image_lvms_pod_containers.volumeMounts.mountPath }}
+      name: {{ microshift_image_lvms_pod_containers.volumeMounts.name }}
   volumes:
-    - name: {{ image_builder_lvms_pod_volumes.name }}
+    - name: {{ microshift_image_lvms_pod_volumes.name }}
       persistentVolumeClaim:
-        claimName: {{ image_builder_lvms_pod_volumes.claimName }}
+        claimName: {{ microshift_image_lvms_pod_volumes.claimName }}
 EOF
