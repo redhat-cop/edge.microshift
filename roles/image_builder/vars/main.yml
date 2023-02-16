@@ -31,6 +31,7 @@ microshift_kickstart_options:
   - volgroup rhel pv.01
   - logvol / --vgname=rhel --fstype=xfs --size=10000 --name=root
   - reboot
+  - network --bootproto=dhcp
   - user --name={{ builder_compose_customizations['user']['name'] }} {{ "--password" if builder_password is defined  }} {{ builder_password if builder_password is defined }} --group=wheel,user  # noqa yaml[line-length]
   - ostreesetup --nogpg --osname=rhel --remote=edge --url=http://{{ ansible_host }}/{{ builder_blueprint_name }}/repo/ --ref={{ builder_blueprint_ref }}
 image_builder_lvms_pvc_name: my-lv-pvc
