@@ -3,13 +3,13 @@
 microshift_image_blueprint_name: microshift
 microshift_image_blueprint_src_path: "/tmp/microshift.toml"
 microshift_image_compose_type: edge-commit
-microshift_image_pubkey_file: "~/.ssh/id_rsa.pub"
+microshift_image_pubkey: "{{ lookup('file', '~/.ssh/id_rsa.pub', errors='warn') }}"
 microshift_image_compose_customizations:
   user:
     name: "edge"
     description: "test user"
     password: "openshift"
-    key: "{{ pubkey_file }}"
+    key: "{{ microshift_image_pubkey }}"
     groups: '["users", "wheel"]'
 
 microshift_kickstart_post:

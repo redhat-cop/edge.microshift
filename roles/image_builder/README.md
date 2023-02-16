@@ -46,18 +46,18 @@ For CentOS Stream and Fedora, you will need to reference the output of the
 `composer-cli compose types` command on the osbuild server (this can also be 
 done on RHEL if preferred).
 
-### microshift_image_pubkey_file
+### microshift_image_pubkey
 
 Type: string
 Required: false
 
-Path to location of ssh public key to inject into the resulting image to allow
+Ssh public key to inject into the resulting image to allow
 key-based ssh functionality without extra configuration for systems installed
-with the resulting build media.
+with the resulting build media. If needed, use lookup to to get the contents from the public ssh key file.
 
 Example:
 ```yaml
-microshift_image_pubkey_file: ~/.ssh/id_rsa.pub
+microshift_image_pubkey: "{{ lookup('file', '~/.ssh/id_rsa.pub', errors='warn') }}"
 ```
 
 ### microshift_image_compose_customizations:
