@@ -57,7 +57,7 @@ with the resulting build media. If needed, use lookup to to get the contents fro
 
 Example:
 ```yaml
-microshift_image_pubkey_file: "{{ lookup('file', '~/.ssh/id_rsa.pub', errors='warn') }}"
+microshift_image_pubkey: "{{ lookup('file', '~/.ssh/id_rsa.pub', errors='warn') }}"
 ```
 
 ### microshift_image_compose_customizations:
