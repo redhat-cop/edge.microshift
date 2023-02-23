@@ -7,6 +7,11 @@
     builder_custom_repos: "{{ microshift_image_custom_repos }}"
     builder_compose_pkgs: "{{ microshift_image_compose_pkgs }}"
 
+- name: Get rhsm repos properties
+  infra.osbuild.rhsm_repo_info:
+    repos: "{{ microshift_rhsm_repos }}"
+  register: builder_rhsm_repos_info
+
 - name: check if ovn vars exist
   when: microshift_image_gateway_interface is defined or microshift_image_external_gateway_interface is defined or microshift_image_mtu is defined
   ansible.builtin.set_fact:
