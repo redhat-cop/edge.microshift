@@ -8,6 +8,7 @@
     builder_compose_pkgs: "{{ microshift_image_compose_pkgs }}"
 
 - name: Get rhsm repos properties
+  when: microshift_rhsm_repos is defined
   infra.osbuild.rhsm_repo_info:
     repos: "{{ microshift_rhsm_repos }}"
   register: builder_rhsm_repos_info
