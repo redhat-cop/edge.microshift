@@ -18,7 +18,7 @@ Required: false
 
 *Use microshift_rhsm_repos to set the rhsm repos used for the Microshift package*
 
-List of RHSM repositories to make available to the 
+List of [RHSM](https://access.redhat.com/products/red-hat-subscription-management/) repositories to make available to the 
 [osbuild](https://www.osbuild.org/) [compose builds](https://www.osbuild.org/guides/user-guide/user-guide.html).
 
 Example:
