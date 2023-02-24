@@ -4,7 +4,6 @@
   ansible.builtin.import_role:
     name: infra.osbuild.setup_server
   vars:
-    builder_custom_repos: "{{ microshift_image_custom_repos }}"
     builder_compose_pkgs: "{{ microshift_image_compose_pkgs }}"
 
 - name: Get rhsm repos properties
@@ -27,6 +26,7 @@
   ansible.builtin.import_role:
     name: infra.osbuild.builder
   vars:
+    builder_custom_repos: "{{ microshift_image_custom_repos | default(omit)}}"
     builder_blueprint_name: "{{ microshift_image_blueprint_name }}"
     builder_blueprint_src_path: "{{ microshift_image_blueprint_src_path }}"
     builder_compose_type: "{{ microshift_image_compose_type }}"
