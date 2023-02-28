@@ -17,6 +17,7 @@ microshift_kickstart_post:
   - "{{ lookup('ansible.builtin.template', '../templates/lvms_setup.j2') }}"
   - "{{ microshift_image_ovn_options_template | default(omit) }}"
   - "{{ microshift_image_crio_proxy_template | default(omit) }}"
+  - "{{ lookup('ansible.builtin.template', '../templates/pull_secret.j2') | default(omit) }}"
 microshift_kickstart_options:
   - lang en_US.UTF-8
   - keyboard us
