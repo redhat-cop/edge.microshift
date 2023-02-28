@@ -26,7 +26,7 @@
   ansible.builtin.import_role:
     name: infra.osbuild.builder
   vars:
-    builder_custom_repos: "{{ microshift_image_custom_repos | default(omit)}}"
+    builder_custom_repos: "{{ microshift_image_custom_repos | default(omit) }}"
     builder_blueprint_name: "{{ microshift_image_blueprint_name }}"
     builder_blueprint_src_path: "{{ microshift_image_blueprint_src_path }}"
     builder_compose_type: "{{ microshift_image_compose_type }}"
@@ -34,4 +34,4 @@
     builder_compose_customizations: "{{ microshift_image_compose_customizations }}"
     builder_kickstart_post: "{{ microshift_kickstart_post }}"
     builder_kickstart_options: "{{ microshift_kickstart_options }}"
-    builder_rhsm_repos_info: "{{ microshift_rhsm_repos_info }}"
+    builder_rhsm_repos_info: "{{ microshift_rhsm_repos_info | default(omit) }}"
