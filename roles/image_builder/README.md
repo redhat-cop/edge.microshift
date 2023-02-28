@@ -267,6 +267,18 @@ microshift_image_crio_proxy:
   port: 123
 ```
 
+### microshift_image_pull_secret
+
+Type: file / string
+Required: false
+
+
+
+Example:
+```yaml
+microshift_image_pull_secret: "{{ lookup('file', '~/pull-secret') }}"
+```
+
 Dependencies
 ------------
 

@@ -10,7 +10,9 @@ microshift_image_compose_customizations:
     description: "test user"
     password: "openshift"
     key: "{{ microshift_image_pubkey }}"
-    groups: '["users", "wheel"]'
+    groups:
+      - 'users'
+      - 'wheel'
 
 microshift_kickstart_post:
   - "{{ lookup('ansible.builtin.template', '../templates/firewall_options.j2') }}"
