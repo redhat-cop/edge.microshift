@@ -10,7 +10,7 @@
   when: microshift_rhsm_repos is defined
   infra.osbuild.rhsm_repo_info:
     repos: "{{ microshift_rhsm_repos }}"
-  register: builder_rhsm_repos_info
+  register: microshift_rhsm_repos_info
 
 - name: check if ovn vars exist
   when: microshift_image_gateway_interface is defined or microshift_image_external_gateway_interface is defined or microshift_image_mtu is defined
@@ -34,3 +34,4 @@
     builder_compose_customizations: "{{ microshift_image_compose_customizations }}"
     builder_kickstart_post: "{{ microshift_kickstart_post }}"
     builder_kickstart_options: "{{ microshift_kickstart_options }}"
+    builder_rhsm_repos_info: "{{ microshift_rhsm_repos_info }}"
