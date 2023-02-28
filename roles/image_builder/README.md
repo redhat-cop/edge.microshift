@@ -11,6 +11,55 @@ None
 Role Variables
 --------------
 
+## microshift_rhsm_repos
+
+Type: list
+Required: false
+
+*Use microshift_rhsm_repos to set the rhsm repos used for the Microshift package*
+
+List of [RHSM](https://access.redhat.com/products/red-hat-subscription-management/) repositories to make available to the 
+[osbuild](https://www.osbuild.org/) [compose builds](https://www.osbuild.org/guides/user-guide/user-guide.html).
+
+Example:
+
+```yaml
+microshift_rhsm_repos:
+    - "rhocp-4.12-for-rhel-{{ ansible_distribution_major_version }}-{{ ansible_architecture }}-rpms"
+    - "fast-datapath-for-rhel-{{ ansible_distribution_major_version }}-{{ ansible_architecture }}-rpms"
+```
+
+## microshift_image_custom_repos
+
+Type: list
+Required: false
+
+*Use microshift_image_custom_repos to use community repos for the Microshift package*
+
+List of custom repositories to make available to the 
+[osbuild](https://www.osbuild.org/) [compose builds](https://www.osbuild.org/guides/user-guide/user-guide.html).
+
+Example:
+
+```yaml
+microshift_image_custom_repos:
+  - name: EPEL8
+    base_url: "https://dl.fedoraproject.org/pub/epel/{{ hostvars[inventory_hostname].ansible_distribution_major_version }}/Everything/x86_64/"
+    type: yum-baseurl
+    check_ssl: true
+    check_gpg: false
+  - name: microshift
+    base_url: https://download.copr.fedorainfracloud.org/results/@redhat-et/microshift-testing/epel-8-x86_64/
+    type: yum-baseurl
+    check_ssl: true
+    check_gpg: false
+  - name: microshift-deps
+    base_url: https://mirror.openshift.com/pub/openshift-v4/x86_64/dependencies/rpms/4.12-el8-beta/
+    type: yum-baseurl
+    check_ssl: true
+    check_gpg: false
+```
+
 ### microshift_image_blueprint_name
 
 Type: string
