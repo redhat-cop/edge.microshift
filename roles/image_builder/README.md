@@ -272,7 +272,7 @@ microshift_image_crio_proxy:
 Type: file / string
 Required: false
 
-
+Pull secret allows authentication with the container registries that serve the container images used by MicroShift.
 
 Example:
 ```yaml
