@@ -22,6 +22,11 @@
   ansible.builtin.set_fact:
     microshift_image_crio_proxy_template: "{{ lookup('ansible.builtin.template', '../templates/crio_proxy.j2') }}"
 
+- name: check if pull secret exists
+  when: microshift_image_pull_secret is defined
+  ansible.builtin.set_fact:
+    microshift_image_crio_proxy_template: "{{ lookup('ansible.builtin.template', '../templates/pull_secret.j2') }}"
+
 - name: Running osbuild image builder
   ansible.builtin.import_role:
     name: infra.osbuild.builder

@@ -10,13 +10,16 @@ microshift_image_compose_customizations:
     description: "test user"
     password: "openshift"
     key: "{{ microshift_image_pubkey }}"
-    groups: '["users", "wheel"]'
+    groups:
+      - 'users'
+      - 'wheel'
 
 microshift_kickstart_post:
   - "{{ lookup('ansible.builtin.template', '../templates/firewall_options.j2') }}"
   - "{{ lookup('ansible.builtin.template', '../templates/lvms_setup.j2') }}"
   - "{{ microshift_image_ovn_options_template | default(None) }}"
   - "{{ microshift_image_crio_proxy_template | default(None) }}"
+  - "{{ microshift_image_pull_secret | default(None) }}"
 microshift_kickstart_options:
   - lang en_US.UTF-8
   - keyboard us

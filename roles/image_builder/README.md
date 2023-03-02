@@ -316,6 +316,20 @@ microshift_image_crio_proxy:
   port: 123
 ```
 
+### microshift_image_pull_secret
+
+Type: file / string
+Required: false
+
+Pull secret allows authentication with the container registries that serve the container images used by the official Red Hat supported MicroShift.
+
+For downloading the pull secret from the Red Hat Hybrid Cloud Console, click [here](https://console.redhat.com/openshift/install/pull-secret)
+
+Example:
+```yaml
+microshift_image_pull_secret: "{{ lookup('file', '~/pull-secret') }}"
+```
+
 Dependencies
 ------------
 
