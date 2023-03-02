@@ -321,7 +321,9 @@ microshift_image_crio_proxy:
 Type: file / string
 Required: false
 
-Pull secret allows authentication with the container registries that serve the container images used by MicroShift.
+Pull secret allows authentication with the container registries that serve the container images used by the official Red Hat supported MicroShift.
+
+For downloading the pull secret from the Red Hat Hybrid Cloud Console, click [here](https://console.redhat.com/openshift/install/pull-secret)
 
 Example:
 ```yaml
