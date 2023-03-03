@@ -12,26 +12,19 @@
     repos: "{{ microshift_rhsm_repos }}"
   register: microshift_rhsm_repos_info
 
-- name: check if ovn vars exist
-  when: microshift_image_gateway_interface is defined or microshift_image_external_gateway_interface is defined or microshift_image_mtu is defined
-  ansible.builtin.set_fact:
-    microshift_image_ovn_options_template: "{{ lookup('ansible.builtin.template', '../templates/ovn_options.j2') }}"
-
-- name: check if crio proxy is true
-  when: microshift_image_crio_proxy is defined
-  ansible.builtin.set_fact:
-    microshift_image_crio_proxy_template: "{{ lookup('ansible.builtin.template', '../templates/crio_proxy.j2') }}"
-
-- name: check if pull secret exists
-  when: microshift_image_pull_secret is defined
-  ansible.builtin.set_fact:
-    microshift_image_crio_proxy_template: "{{ lookup('ansible.builtin.template', '../templates/pull_secret.j2') }}"
+- name: Conditionally set Osbuild vars
+  when: item.value is defined
+  ansible.builtin.set_fact: "{{ item.name }}: {{ item.value }}"
+  loop:
+    - { name: microshift_image_ovn_options_template, value: "{{ lookup('ansible.builtin.template', '../templates/ovn_options.j2') if microshift_image_gateway_interface is defined or microshift_image_external_gateway_interface is defined or microshift_image_mtu is defined  }}" }
+    - { name: microshift_image_crio_proxy_template, value: "{{ lookup('ansible.builtin.template', '../templates/crio_proxy.j2') if microshift_image_crio_proxy is defined }}" }
+    - { name: microshift_image_pull_secret_template, value: "{{ lookup('ansible.builtin.template', '../templates/pull_secret.j2') if microshift_image_pull_secret is defined }}" }
 
 - name: Running osbuild image builder
   ansible.builtin.import_role:
     name: infra.osbuild.builder
   vars:
-    builder_custom_repos: "{{ microshift_image_custom_repos | default(omit) }}"
+    builder_custom_repos: "{{ microshift_image_custom_repos | default([]) }}"
     builder_blueprint_name: "{{ microshift_image_blueprint_name }}"
     builder_blueprint_src_path: "{{ microshift_image_blueprint_src_path }}"
     builder_compose_type: "{{ microshift_image_compose_type }}"
@@ -39,4 +32,4 @@
     builder_compose_customizations: "{{ microshift_image_compose_customizations }}"
     builder_kickstart_post: "{{ microshift_kickstart_post }}"
     builder_kickstart_options: "{{ microshift_kickstart_options }}"
-    builder_rhsm_repos_info: "{{ microshift_rhsm_repos_info | default(omit) }}"
+    builder_rhsm_repos_info: "{{ microshift_rhsm_repos_info | default([]) }}"
