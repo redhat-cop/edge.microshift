@@ -54,6 +54,3 @@ microshift_image_lvms_pod_containers:
 microshift_image_lvms_pod_volumes:
     name: my-volume
     claimName: my-lv-pvc
-microshift_rhsm_repos:
-    - "rhocp-4.12-for-rhel-{{ ansible_distribution_major_version }}-{{ ansible_architecture }}-rpms"
-    - "fast-datapath-for-rhel-{{ ansible_distribution_major_version }}-{{ ansible_architecture }}-rpms"
