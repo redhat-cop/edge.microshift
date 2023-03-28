@@ -46,7 +46,7 @@ tags: ['infrastructure']
 dependencies:
   "community.general": ">1.0.0"
   "ansible.posix": ">1.0.0"
-  "https://github.com/redhat-cop/infra.osbuild": ">2.0.0"
+  "git+https://github.com/redhat-cop/infra.osbuild": ">2.0.0"
 
 # The URL of the originating SCM repository
 repository: https://github.com/ansible-collections/edge.microshift
