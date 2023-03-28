@@ -4,7 +4,6 @@ microshift_image_compose_pkgs:
   - microshift
   - NetworkManager-wifi
   - firewalld
-  - openshift-clients
   - git
 microshift_image_firewall_options:
   # network_access_to_pods (mandatory)
