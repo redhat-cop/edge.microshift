@@ -1,25 +1,10 @@
 ---
 # defaults file for image_builder
-microshift_image_custom_repos:
-  - name: EPEL8
-    base_url: "https://dl.fedoraproject.org/pub/epel/{{ hostvars[inventory_hostname].ansible_distribution_major_version }}/Everything/x86_64/"
-    type: yum-baseurl
-    check_ssl: true
-    check_gpg: false
-  - name: microshift
-    base_url: https://download.copr.fedorainfracloud.org/results/@redhat-et/microshift-testing/epel-8-x86_64/
-    type: yum-baseurl
-    check_ssl: true
-    check_gpg: false
-  - name: microshift-deps
-    base_url: https://mirror.openshift.com/pub/openshift-v4/x86_64/dependencies/rpms/4.12-el8-beta/
-    type: yum-baseurl
-    check_ssl: true
-    check_gpg: false
 microshift_image_compose_pkgs:
   - microshift
   - NetworkManager-wifi
   - firewalld
+  - git
 microshift_image_firewall_options:
   # network_access_to_pods (mandatory)
   - zone: trusted
