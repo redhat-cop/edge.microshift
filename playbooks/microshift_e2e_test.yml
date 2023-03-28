@@ -1,0 +1,19 @@
+---
+- name: Run microshift image builder role
+  become: true
+  hosts: all
+  gather_facts: true
+  vars:
+    microshift_rhsm_repos:
+      - "rhocp-4.12-for-rhel-{{ ansible_distribution_major_version }}-{{ ansible_architecture }}-rpms"
+      - "fast-datapath-for-rhel-{{ ansible_distribution_major_version }}-{{ ansible_architecture }}-rpms"
+    microshift_kickstart_post:
+      - "{{ lookup('ansible.builtin.template', '../templates/firewall_options.j2') }}"
+      - "{{ lookup('ansible.builtin.template', '../templates/lvms_setup.j2') }}"
+      - "{{ microshift_image_ovn_options_template | default(None) }}"
+      - "{{ microshift_image_crio_proxy_template | default(None) }}"
+      - "{{ microshift_image_pull_secret_template | default(None) }}"
+  tasks:
+    - name: Create image with microshift
+      ansible.builtin.import_role:
+        name: edge.microshift.image_builder

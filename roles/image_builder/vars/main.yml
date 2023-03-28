@@ -1,10 +1,13 @@
 ---
 # vars file for image_builder
-microshift_image_blueprint_name: microshift
+microshift_image_blueprint_name: microshift-test
 microshift_image_blueprint_src_path: "/tmp/microshift.toml"
-microshift_image_compose_type: edge-commit
+microshift_image_compose_type: edge-installer
 microshift_image_pubkey: "{{ lookup('file', '~/.ssh/id_rsa.pub', errors='warn') }}"
 microshift_image_compose_customizations:
+  services:
+    enabled: 
+      - "microshift"
   user:
     name: "edge"
     description: "test user"
@@ -51,3 +54,6 @@ microshift_image_lvms_pod_containers:
 microshift_image_lvms_pod_volumes:
     name: my-volume
     claimName: my-lv-pvc
+microshift_rhsm_repos:
+    - "rhocp-4.12-for-rhel-{{ ansible_distribution_major_version }}-{{ ansible_architecture }}-rpms"
+    - "fast-datapath-for-rhel-{{ ansible_distribution_major_version }}-{{ ansible_architecture }}-rpms"
