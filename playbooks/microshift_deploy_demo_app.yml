@@ -6,13 +6,13 @@
       ansible.builtin.file:
         path: /etc/microshift/manifests
         state: directory
-        mode: 0755
+        mode: "0755"
 
     - name: Pull kustomize manifest
       ansible.builtin.get_url:
         url: "https://raw.githubusercontent.com/redhat-et/microshift-demos/main/apps/hello-microshift/{{ item }}.yaml"
         dest: "/etc/microshift/manifests/{{ item }}.yaml"
-        mode: 0644
+        mode: "0644"
       loop:
         - kustomization
         - deployment
