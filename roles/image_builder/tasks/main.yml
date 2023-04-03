@@ -30,6 +30,6 @@
     builder_compose_type: "{{ microshift_image_compose_type }}"
     pubkey_file: "{{ microshift_image_pubkey }}"
     builder_compose_customizations: "{{ microshift_image_compose_customizations }}"
-    builder_kickstart_post: "{{ microshift_kickstart_post }}"
+    additional_kickstart_post: "{{ microshift_kickstart_post }}"
     builder_kickstart_options: "{{ microshift_kickstart_options }}"
     builder_rhsm_repos_info: "{{ microshift_rhsm_repos_info | default([]) }}"
