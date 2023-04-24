@@ -1,38 +1,81 @@
-Role Name
-=========
+# edge.microshift.app
 
-A brief description of the role goes here.
+This role deploys application onto a system running microshift.
 
-Requirements
-------------
+## Requirements
 
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+The role requires a system to be running microshift which
+the `edge.microshift.image_build` role will automate the creation of.
 
-Role Variables
---------------
+## Role Variables
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
+### microshift_image_pull_secret
 
-Dependencies
-------------
+Type: file / string
+Required: false
 
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
+Pull secret allows authentication with the container registries that serve the container images used by the official Red Hat supported MicroShift.
 
-Example Playbook
-----------------
+For downloading the pull secret from the Red Hat Hybrid Cloud Console, click [here](https://console.redhat.com/openshift/install/pull-secret)
 
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
+**Note:** If the pull secret is not on the microshift system then the pull secret will need to be set and defined in the playbook.
 
-    - hosts: servers
-      roles:
-         - { role: username.rolename, x: 42 }
+Example:
+```yaml
+microshift_image_pull_secret: "{{ lookup('file', '~/pull-secret') }}"
+```
 
-License
--------
+### microshift_app_manifests
 
-BSD
+Type: complex
+Required: true
 
-Author Information
-------------------
+Application manifest files to be deployed on a microshift system. 
 
-An optional section for the role authors to include contact information, or a website (HTML is not allowed).
+Accepts a list of key value pairs. `src` is for the path the file and `name` is what the file is going to be called on the remote system.
+
+Example:
+
+```yaml
+microshift_app_manifests:
+  - name: deployment
+    src: /path/to/deployment.yaml
+```
+
+## Variables Exported by the Role
+
+None.
+
+## Dependencies
+
+None.
+
+## Example Playbook
+
+```yaml
+---
+- name: Deploy application on microshift
+  hosts: all
+  tasks:
+    - name: Deploy application
+      vars:
+        microshift_image_pull_secret: "{{ lookup('file', '~/pull-secret.txt') }}"
+        microshift_app_manifests:
+          - src: /manifests/deployment.yaml
+          name: deployment
+          - src: /manifests/kustomization.yaml
+            name: kustomization
+          - src: /manifests/namespace.yaml
+            name: namespace
+          - src: /manifests/route.yaml
+            name: route
+          - src: /manifests/service.yaml
+            name: service
+      ansible.builtin.import_role:
+        name: edge.microshift.app
+```
+
+
+## License
+
+GPLv3
