@@ -1,0 +1,6 @@
+---
+# handlers file for app
+- name: Restart microshift
+  ansible.builtin.systemd:
+    service: microshift
+    state: restarted
