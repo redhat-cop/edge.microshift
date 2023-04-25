@@ -50,7 +50,7 @@
     - name: Copy manifests to microshift system
       loop: "{{ microshift_app_manifests }}"
       ansible.builtin.copy:
-        src: "{{ item.src }}"
-        dest: "/etc/microshift/manifests/{{ item.name }}.yaml"
+        src: "{{ item }}"
+        dest: "/etc/microshift/manifests/{{ item | ansible.builtin.basename }}.yaml"
         mode: "0644"
       notify: Restart microshift

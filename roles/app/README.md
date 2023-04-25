@@ -22,7 +22,7 @@ For downloading the pull secret from the Red Hat Hybrid Cloud Console, click [he
 
 Example:
 ```yaml
-microshift_image_pull_secret: "{{ lookup('file', '~/pull-secret') }}"
+microshift_image_pull_secret: "{{ lookup('file', '~/pull-secret.txt') }}"
 ```
 
 ### microshift_app_manifests
@@ -32,14 +32,12 @@ Required: true
 
 Application manifest files to be deployed on a microshift system. 
 
-Accepts a list of key value pairs. `src` is for the path the file and `name` is what the file is going to be called on the remote system.
-
 Example:
 
 ```yaml
 microshift_app_manifests:
-  - name: deployment
-    src: /path/to/deployment.yaml
+  - /path/to/manifest1.yaml
+  - /path/to/manifest2.yaml
 ```
 
 ## Variables Exported by the Role
@@ -61,16 +59,11 @@ None.
       vars:
         microshift_image_pull_secret: "{{ lookup('file', '~/pull-secret.txt') }}"
         microshift_app_manifests:
-          - src: /manifests/deployment.yaml
-          name: deployment
-          - src: /manifests/kustomization.yaml
-            name: kustomization
-          - src: /manifests/namespace.yaml
-            name: namespace
-          - src: /manifests/route.yaml
-            name: route
-          - src: /manifests/service.yaml
-            name: service
+          - /manifests/deployment.yaml
+          - /manifests/kustomization.yaml
+          - /manifests/namespace.yaml
+          - /manifests/route.yaml
+          - /manifests/service.yaml
       ansible.builtin.import_role:
         name: edge.microshift.app
 ```
