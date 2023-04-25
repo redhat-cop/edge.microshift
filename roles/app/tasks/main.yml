@@ -1,0 +1,56 @@
+---
+# tasks file for app
+- name: Get non root user dir
+  ansible.builtin.set_fact:
+    ansible_non_root_user_dir: "{{ ansible_user_dir }}"
+
+- name: Setup and deploy app
+  become: true
+  block:
+    - name: Check for microshift pull secret exists on system
+      ansible.builtin.stat:
+        path: /etc/crio/openshift-pull-secret
+      register: stat_output
+
+    - name: Conditional create microshift pull secret
+      when: not stat_output.stat.exists
+      block:
+        - name: Assert microshift pull secret is defined
+          ansible.builtin.assert:
+            that:
+              - microshift_image_pull_secret is defined
+            msg: "Microshift pull secret needs to be defined for app deployment"
+        - name: Create microshift pull secret file on system
+          ansible.builtin.copy:
+            dest: /etc/crio/openshift-pull-secret
+            content: "{{ microshift_image_pull_secret }}"
+            owner: root
+            mode: "0600"
+
+    - name: Ensure manifest directory exists
+      ansible.builtin.file:
+        path: /etc/microshift/manifests
+        state: directory
+        mode: "0755"
+
+
+    - name: Create user kube config dir
+      ansible.builtin.file:
+        path: "{{ ansible_non_root_user_dir }}/.kube"
+        state: directory
+        mode: "0755"
+
+    - name: Copy default kube config
+      ansible.builtin.copy:
+        src: /var/lib/microshift/resources/kubeadmin/kubeconfig
+        dest: "{{ ansible_non_root_user_dir }}/.kube/config"
+        mode: "0644"
+        remote_src: true
+
+    - name: Copy manifests to microshift system
+      loop: "{{ microshift_app_manifests }}"
+      ansible.builtin.copy:
+        src: "{{ item }}"
+        dest: "/etc/microshift/manifests/{{ item | ansible.builtin.basename }}.yaml"
+        mode: "0644"
+      notify: Restart microshift
