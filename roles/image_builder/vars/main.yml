@@ -4,6 +4,9 @@ microshift_image_blueprint_name: microshift
 microshift_image_blueprint_src_path: "/tmp/microshift.toml"
 microshift_image_compose_type: edge-installer
 microshift_image_pubkey: "{{ lookup('file', '~/.ssh/id_rsa.pub', errors='warn') }}"
+microshift_rhsm_repos:
+  - "rhocp-4.12-for-rhel-{{ ansible_distribution_major_version }}-{{ ansible_architecture }}-rpms"
+  - "fast-datapath-for-rhel-{{ ansible_distribution_major_version }}-{{ ansible_architecture }}-rpms"
 microshift_image_compose_customizations:
   services:
     enabled:
