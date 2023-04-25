@@ -13,10 +13,11 @@
       register: stat_output
 
     - name: Conditional create microshift pull secret
+      when: not stat_output.stat.exists
       block:
         - name: Assert microshift pull secret is defined
           ansible.builtin.assert:
-            that: 
+            that:
               - microshift_image_pull_secret is defined
             msg: "Microshift pull secret needs to be defined for app deployment"
         - name: Create microshift pull secret file on system
@@ -25,7 +26,6 @@
             content: "{{ microshift_image_pull_secret }}"
             owner: root
             mode: "0600"
-      when: not stat_output.stat.exists
 
     - name: Ensure manifest directory exists
       ansible.builtin.file:
