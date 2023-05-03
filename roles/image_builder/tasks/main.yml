@@ -6,12 +6,6 @@
   vars:
     builder_compose_pkgs: "{{ microshift_image_compose_pkgs }}"
 
-- name: Get rhsm repos properties
-  when: microshift_rhsm_repos is defined
-  infra.osbuild.rhsm_repo_info:
-    repos: "{{ microshift_rhsm_repos }}"
-  register: microshift_rhsm_repos_info
-
 - name: Conditionally set Osbuild vars
   when: item.value is defined
   ansible.builtin.set_fact: "{{ item.name }}: {{ item.value }}"
@@ -32,4 +26,4 @@
     builder_compose_customizations: "{{ microshift_image_compose_customizations }}"
     additional_kickstart_post: "{{ microshift_kickstart_post }}"
     builder_kickstart_options: "{{ microshift_kickstart_options }}"
-    builder_rhsm_repos_info: "{{ microshift_rhsm_repos_info | default([]) }}"
+    builder_rhsm_repos: "{{ microshift_rhsm_repos }}"
