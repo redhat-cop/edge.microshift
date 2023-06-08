@@ -1,6 +1,6 @@
 ---
 galaxy_info:
-  role_name: "rmp_install"
+  role_name: "rpm_install"
   standalone: false
   company: "Red Hat"
   description: "Install Microshift on a RPM based system"
