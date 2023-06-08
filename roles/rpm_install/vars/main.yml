@@ -1,0 +1,6 @@
+---
+rhc_repositories:
+  - {name: "rhel-{{ ansible_distribution_major_version }}-for-x86_64-appstream-rpms", state: enabled }
+  - {name: "rhel-{{ ansible_distribution_major_version }}-for-x86_64-baseos-rpms", state: enabled }
+  - {name: "rhocp-4.12-for-rhel-{{ ansible_distribution_major_version }}-{{ ansible_architecture }}-rpms", state: enabled }
+  - {name: "fast-datapath-for-rhel-{{ ansible_distribution_major_version }}-{{ ansible_architecture }}-rpms", state: enabled }

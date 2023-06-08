@@ -1,0 +1,2 @@
+---
+rpm_install_pull_secret: "{{ lookup('file', '~/pull-secret.txt') }}"

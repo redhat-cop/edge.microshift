@@ -1,0 +1,62 @@
+---
+- name: Get non root user dir
+  ansible.builtin.set_fact:
+    ansible_non_root_user_dir: "{{ ansible_user_dir }}"
+
+- name: Install and setup Microshift
+  become: true
+  block:
+    - name: Setup Repositories
+      ansible.builtin.include_role:
+        name: redhat.rhel_system_roles.rhc
+      when:
+        - ansible_distribution == 'RedHat'
+
+    - name: Install the latest version of Microshift and openshift-clients
+      ansible.builtin.dnf:
+        name: "{{ item }}"
+        state: present
+      loop:
+        - microshift
+        - openshift-clients
+
+    - name: Copy pull secret
+      ansible.builtin.copy:
+        content: "{{ rpm_install_pull_secret }}"
+        dest: /etc/crio/openshift-pull-secret
+        owner: root
+        mode: "0600"
+
+    - name: Add trusted sources to firewalld
+      ansible.posix.firewalld:
+        source: "{{ item }}"
+        zone: trusted
+        permanent: true
+        state: enabled
+      loop:
+        - 10.42.0.0/16
+        - 169.254.169.1
+
+    - name: Reload firewalld service
+      ansible.builtin.systemd:
+        name: firewalld
+        state: reloaded
+
+    - name: Start/enable microshift service
+      ansible.builtin.systemd:
+        name: microshift
+        state: started
+        enabled: true
+
+    - name: Create user kube config dir
+      ansible.builtin.file:
+        path: "{{ ansible_non_root_user_dir }}/.kube"
+        state: directory
+        mode: "0755"
+
+    - name: Set up kubeconfig
+      ansible.builtin.copy:
+        src: /var/lib/microshift/resources/kubeadmin/kubeconfig
+        dest: "{{ ansible_non_root_user_dir }}/.kube/config"
+        mode: "0644"
+        remote_src: true
