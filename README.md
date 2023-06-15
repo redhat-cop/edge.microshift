@@ -54,7 +54,10 @@ Every voice is important. If you have something on your mind, create an issue or
 
 <!-- List the versions of Ansible the collection has been tested with. Must match what is in galaxy.yml. -->
 
-**FIXME**
+- ansible-core (devel)
+- ansible-core 2.14 (stable)
+- ansible-core 2.13 (stable)
+- ansible-core 2.12 (stable)
 
 ## External requirements
 
