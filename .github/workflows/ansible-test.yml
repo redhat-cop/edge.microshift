@@ -183,6 +183,7 @@ jobs:
           - devel
         # - milestone
         python:
+          - '3.5'
           - '3.6'
           - '3.7'
           - '3.8'
@@ -192,6 +193,8 @@ jobs:
         exclude:
           # Because ansible-test doesn't support Python 3.9 for Ansible 2.9
           # and Python 3.10 is supported in 2.12 or later.
+          - ansible: devel
+            python: '3.5'
           - ansible: stable-2.9
             python: '3.9'
           - ansible: stable-2.9
@@ -200,6 +203,10 @@ jobs:
             python: '3.10'
           - ansible: stable-2.11
             python: '3.10'
+          - ansible: stable-2.12
+            python: '3.11'
+          - ansible: stable-2.13
+            python: '3.11'
             
 
     steps:
