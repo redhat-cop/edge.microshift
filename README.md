@@ -59,28 +59,17 @@ Every voice is important. If you have something on your mind, create an issue or
 - ansible-core 2.13 (stable)
 - ansible-core 2.12 (stable)
 
-## External requirements
-
-<!-- List any external resources the collection depends on, for example minimum versions of an OS, libraries, or utilities. Do not list other Ansible collections here. -->
-
-**FIXME**
-
-### Supported connections
-<!-- Optional. If your collection supports only specific connection types (such as HTTPAPI, netconf, or others), list them here. -->
-
-**FIXME**
-
 ## Included content
 
 <!-- Galaxy will eventually list the module docs within the UI, but until that is ready, you may need to either describe your plugins etc here, or point to an external docsite to cover that information. -->
-
-**FIXME**
+Roles:
+- image_builder
+- app
+- rpm_install
 
 ## Using this collection
 
 <!--Include some quick examples that cover the most common use cases for your collection content. It can include the following examples of installation and upgrade (change edge.microshift correspondingly):-->
-
-**FIXME**
 
 ### Installing the Collection from Ansible Galaxy
 
