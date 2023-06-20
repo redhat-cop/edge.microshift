@@ -50,6 +50,21 @@ The process of decision making in this collection is based on discussing and fin
 
 Every voice is important. If you have something on your mind, create an issue or dedicated discussion and let's discuss it!
 
+
+## Supported Versions of Ansible
+
+<!--start requires_ansible-->
+
+## Ansible version compatibility
+
+This collection has been tested against following Ansible versions: **>=2.12**.
+
+Plugins and modules within a collection may be tested with only specific
+Ansible versions.  A collection may contain metadata that identifies these versions.
+PEP440 is the schema used to describe the versions of Ansible.
+
+<!--end requires_ansible-->
+
 ## Tested with Ansible
 
 <!-- List the versions of Ansible the collection has been tested with. Must match what is in galaxy.yml. -->
