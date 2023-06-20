@@ -1,5 +1,7 @@
 # Microshift management and automation Collection
 
+[![OpenSSF Best Practices](https://bestpractices.coreinfrastructure.org/projects/7481/badge)](https://bestpractices.coreinfrastructure.org/projects/7481)
+
 **NOTE: THIS COLLECTION IS UNDER ACTIVE DEVELOPMENT AND NOT READY FOR GENERAL USE**
 
 [Ansible Collection](https://docs.ansible.com/ansible/latest/user_guide/collections_using.html)
