@@ -1,5 +1,7 @@
 # Microshift management and automation Collection
 
+[![OpenSSF Best Practices](https://bestpractices.coreinfrastructure.org/projects/7481/badge)](https://bestpractices.coreinfrastructure.org/projects/7481)
+
 **NOTE: THIS COLLECTION IS UNDER ACTIVE DEVELOPMENT AND NOT READY FOR GENERAL USE**
 
 [Ansible Collection](https://docs.ansible.com/ansible/latest/user_guide/collections_using.html)
@@ -50,6 +52,21 @@ The process of decision making in this collection is based on discussing and fin
 
 Every voice is important. If you have something on your mind, create an issue or dedicated discussion and let's discuss it!
 
+
+## Supported Versions of Ansible
+
+<!--start requires_ansible-->
+
+## Ansible version compatibility
+
+This collection has been tested against following Ansible versions: **>=2.12**.
+
+Plugins and modules within a collection may be tested with only specific
+Ansible versions.  A collection may contain metadata that identifies these versions.
+PEP440 is the schema used to describe the versions of Ansible.
+
+<!--end requires_ansible-->
+
 ## Tested with Ansible
 
 <!-- List the versions of Ansible the collection has been tested with. Must match what is in galaxy.yml. -->
@@ -59,28 +76,17 @@ Every voice is important. If you have something on your mind, create an issue or
 - ansible-core 2.13 (stable)
 - ansible-core 2.12 (stable)
 
-## External requirements
-
-<!-- List any external resources the collection depends on, for example minimum versions of an OS, libraries, or utilities. Do not list other Ansible collections here. -->
-
-**FIXME**
-
-### Supported connections
-<!-- Optional. If your collection supports only specific connection types (such as HTTPAPI, netconf, or others), list them here. -->
-
-**FIXME**
-
 ## Included content
 
 <!-- Galaxy will eventually list the module docs within the UI, but until that is ready, you may need to either describe your plugins etc here, or point to an external docsite to cover that information. -->
-
-**FIXME**
+Roles:
+- image_builder
+- app
+- rpm_install
 
 ## Using this collection
 
 <!--Include some quick examples that cover the most common use cases for your collection content. It can include the following examples of installation and upgrade (change edge.microshift correspondingly):-->
-
-**FIXME**
 
 ### Installing the Collection from Ansible Galaxy
 
