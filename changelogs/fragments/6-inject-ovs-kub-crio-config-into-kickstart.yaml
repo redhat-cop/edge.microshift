@@ -1,3 +1,0 @@
----
-major_changes:
-  - image_builder - Added ability to configure ovs-kubernetes and crio proxy

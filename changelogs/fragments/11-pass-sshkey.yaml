@@ -1,3 +1,0 @@
----
-bugfixes:
-  - image_builder - pass sshkey instead of the file path

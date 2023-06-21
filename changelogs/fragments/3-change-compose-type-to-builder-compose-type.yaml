@@ -1,3 +1,0 @@
----
-bugfixes:
-  - image_builder - change compose_type to builder_compose_type to pass the value to osbuild builder role

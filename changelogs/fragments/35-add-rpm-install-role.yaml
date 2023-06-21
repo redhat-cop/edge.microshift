@@ -1,3 +1,0 @@
----
-major_changes:
-  - image_builder - added rpm_install role to automate the install for microshift on rpm based systems

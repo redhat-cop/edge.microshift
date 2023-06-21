@@ -1,3 +1,0 @@
----
-minor_changes:
-  - image_builder - create set_fact loop to set fact in a DRY way
