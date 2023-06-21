@@ -1,4 +1,4 @@
 ---
-minor_changes:
+trivial:
   - image_builder - removed dependencies
   
