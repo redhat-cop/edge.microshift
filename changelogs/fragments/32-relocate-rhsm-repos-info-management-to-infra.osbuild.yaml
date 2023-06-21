@@ -1,0 +1,4 @@
+---
+minor_changes:
+  - image_builder - relocate rhsm_repos_info management to infra.osbuild
+  

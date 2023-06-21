@@ -1,0 +1,4 @@
+---
+trivial:
+  - image_builder - fix all current lint issues
+  

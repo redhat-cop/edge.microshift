@@ -1,0 +1,3 @@
+---
+bugfixes:
+  - image_builder - fix issue where iso fails to auto install
