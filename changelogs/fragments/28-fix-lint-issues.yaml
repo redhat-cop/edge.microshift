@@ -1,0 +1,4 @@
+---
+minor_changes:
+  - image_builder - fix all current lint issues
+  

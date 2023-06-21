@@ -1,0 +1,3 @@
+---
+bugfixes:
+  - image_builder - update lvms namespace to match the collections namespace

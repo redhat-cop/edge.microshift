@@ -1,0 +1,3 @@
+---
+major_changes:
+  - image_builder - added default firewall option for mandatory microshift rules and ability to create additional port/sources for zones
