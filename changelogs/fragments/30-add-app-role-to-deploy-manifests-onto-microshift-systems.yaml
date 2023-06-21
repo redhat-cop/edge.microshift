@@ -1,4 +1,0 @@
----
-major_changes:
-  - image_builder - added app role to deploy manifests onto microshift system
-  

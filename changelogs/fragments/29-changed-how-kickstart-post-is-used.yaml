@@ -1,4 +1,0 @@
----
-minor_changes:
-  - image_builder - uses the new updated way of adding kickstart post to osbuild additional_kickstart_post var
-  

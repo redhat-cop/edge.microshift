@@ -1,4 +1,0 @@
----
-minor_changes:
-  - image_builder - add playbook to deploy demo app to microshift
-  

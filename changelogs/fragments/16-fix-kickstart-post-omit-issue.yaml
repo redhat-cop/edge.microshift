@@ -1,3 +1,0 @@
----
-bugfixes:
-  - image_builder - updated microshift_kickstart_post variable to fix issue with omit in kickstart post

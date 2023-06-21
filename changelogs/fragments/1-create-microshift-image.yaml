@@ -1,3 +1,0 @@
----
-major_changes:
-  - image_builder - created new image builder role to create image with microshift and necessary bits baked in
