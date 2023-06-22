@@ -1,3 +1,0 @@
----
-minor_changes:
-  - requirements - removed general collection and replaced it with redhat.rhel_system_roles collection.
