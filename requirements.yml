@@ -1,4 +1,5 @@
 ---
 collections:
+  - redhat.rhel_system_roles
   - ansible.posix
   - git+https://github.com/ansible-collections/edge.microshift.git
