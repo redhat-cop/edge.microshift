@@ -3,61 +3,61 @@ releases:
   1.0.0:
     changes:
       bugfixes:
-      - image_builder - change compose_type to builder_compose_type to pass the value
-        to osbuild builder role
-      - image_builder - fix issue where iso fails to auto install
-      - image_builder - pass sshkey instead of the file path
-      - image_builder - update lvms namespace to match the collections namespace
-      - image_builder - updated microshift_kickstart_post variable to fix issue with
-        omit in kickstart post
+        - image_builder - change compose_type to builder_compose_type to pass the value
+          to osbuild builder role
+        - image_builder - fix issue where iso fails to auto install
+        - image_builder - pass sshkey instead of the file path
+        - image_builder - update lvms namespace to match the collections namespace
+        - image_builder - updated microshift_kickstart_post variable to fix issue with
+          omit in kickstart post
       major_changes:
-      - image_builder - Added ability to configure ovs-kubernetes and crio proxy
-      - image_builder - add rhsm repo support
-      - image_builder - added ability to provide pull secrets to kickstart
-      - image_builder - added app role to deploy manifests onto microshift system
-      - image_builder - added default firewall option for mandatory microshift rules
-        and ability to create additional port/sources for zones
-      - image_builder - added rpm_install role to automate the install for microshift
-        on rpm based systems
-      - image_builder - added storage config to kickstart file
-      - image_builder - created new image builder role to create image with microshift
-        and necessary bits baked in
+        - image_builder - Added ability to configure ovs-kubernetes and crio proxy
+        - image_builder - add rhsm repo support
+        - image_builder - added ability to provide pull secrets to kickstart
+        - image_builder - added app role to deploy manifests onto microshift system
+        - image_builder - added default firewall option for mandatory microshift rules
+          and ability to create additional port/sources for zones
+        - image_builder - added rpm_install role to automate the install for microshift
+          on rpm based systems
+        - image_builder - added storage config to kickstart file
+        - image_builder - created new image builder role to create image with microshift
+          and necessary bits baked in
       minor_changes:
-      - image_builder - add playbook to deploy demo app to microshift
-      - image_builder - add rhsm repo var for rhocp & fast_datapath_for_rhel
-      - image_builder - content readme updated
-      - image_builder - create set_fact loop to set fact in a DRY way
-      - image_builder - relocate rhsm_repos_info management to infra.osbuild
-      - image_builder - used latest version for osbuild
-      - image_builder - uses the new updated way of adding kickstart post to osbuild
-        additional_kickstart_post var
-      - microshift_e2e_test - add microshift test playbook
+        - image_builder - add playbook to deploy demo app to microshift
+        - image_builder - add rhsm repo var for rhocp & fast_datapath_for_rhel
+        - image_builder - content readme updated
+        - image_builder - create set_fact loop to set fact in a DRY way
+        - image_builder - relocate rhsm_repos_info management to infra.osbuild
+        - image_builder - used latest version for osbuild
+        - image_builder - uses the new updated way of adding kickstart post to osbuild
+          additional_kickstart_post var
+        - microshift_e2e_test - add microshift test playbook
     fragments:
-    - 1-create-microshift-image.yaml
-    - 10-fix-iso-auto-install.yaml
-    - 11-pass-sshkey.yaml
-    - 12-update-lvms-namespace.yaml
-    - 14-rhsm-repo.yaml
-    - 15-provide-pull-secrets-to-kickstart.yaml
-    - 16-fix-kickstart-post-omit-issue.yaml
-    - 17-create-set-fact-loop.yaml
-    - 18-microshift-test-playbook.yaml
-    - 19-update-galaxy-file.yaml
-    - 2-updated-readme-with-basic-info.yaml
-    - 24-used-latest-version-for-osbuild.yaml
-    - 25-removed-dependencies.yaml
-    - 26-updated-galaxy-dependencies.yaml
-    - 27-add-playbook-to-deploy-demo-app-to-microshift.yaml
-    - 28-fix-lint-issues.yaml
-    - 29-changed-how-kickstart-post-is-used.yaml
-    - 3-change-compose-type-to-builder-compose-type.yaml
-    - 30-add-app-role-to-deploy-manifests-onto-microshift-systems.yaml
-    - 31-add-rhsm-repo-var-for-rhocp-and-fast-datapath-for-rhel.yaml
-    - 32-relocate-rhsm-repos-info-management-to-infra.osbuild.yaml
-    - 35-add-rpm-install-role.yaml
-    - 36-codeowners.yaml
-    - 37-content-readme.yaml
-    - 4-firewall-config.yaml
-    - 6-inject-ovs-kub-crio-config-into-kickstart.yaml
-    - 7-add-storage-config-to-kickstart.yaml
+      - 1-create-microshift-image.yaml
+      - 10-fix-iso-auto-install.yaml
+      - 11-pass-sshkey.yaml
+      - 12-update-lvms-namespace.yaml
+      - 14-rhsm-repo.yaml
+      - 15-provide-pull-secrets-to-kickstart.yaml
+      - 16-fix-kickstart-post-omit-issue.yaml
+      - 17-create-set-fact-loop.yaml
+      - 18-microshift-test-playbook.yaml
+      - 19-update-galaxy-file.yaml
+      - 2-updated-readme-with-basic-info.yaml
+      - 24-used-latest-version-for-osbuild.yaml
+      - 25-removed-dependencies.yaml
+      - 26-updated-galaxy-dependencies.yaml
+      - 27-add-playbook-to-deploy-demo-app-to-microshift.yaml
+      - 28-fix-lint-issues.yaml
+      - 29-changed-how-kickstart-post-is-used.yaml
+      - 3-change-compose-type-to-builder-compose-type.yaml
+      - 30-add-app-role-to-deploy-manifests-onto-microshift-systems.yaml
+      - 31-add-rhsm-repo-var-for-rhocp-and-fast-datapath-for-rhel.yaml
+      - 32-relocate-rhsm-repos-info-management-to-infra.osbuild.yaml
+      - 35-add-rpm-install-role.yaml
+      - 36-codeowners.yaml
+      - 37-content-readme.yaml
+      - 4-firewall-config.yaml
+      - 6-inject-ovs-kub-crio-config-into-kickstart.yaml
+      - 7-add-storage-config-to-kickstart.yaml
     release_date: '2023-06-21'

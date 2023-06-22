@@ -14,7 +14,7 @@
 #    network.
 
 name: CI
-on:
+on: # yamllint disable-line rule:truthy
   # Run CI against all pushes (direct commits, also merged PRs), Pull Requests
   push:
     branches:
@@ -207,7 +207,6 @@ jobs:
             python: '3.11'
           - ansible: stable-2.13
             python: '3.11'
-            
 
     steps:
       - name: >-

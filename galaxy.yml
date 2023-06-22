@@ -43,8 +43,10 @@ tags: ['infrastructure']
 # collection label 'namespace.name'. The value is a version range
 # L(specifiers,https://python-semanticversion.readthedocs.io/en/latest/#requirement-specification). Multiple version
 # range specifiers can be set and are separated by ','
-dependencies:
-  "git+https://github.com/redhat-cop/infra.osbuild.git": "main"
+
+# add when osbuild is uploaded to automation hub
+# dependencies:
+#   "infra.osbuild": ">2.0.0"
 
 # The URL of the originating SCM repository
 repository: https://github.com/ansible-collections/edge.microshift
