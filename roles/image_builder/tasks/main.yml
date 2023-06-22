@@ -4,7 +4,7 @@
   ansible.builtin.import_role:
     name: infra.osbuild.setup_server
   vars:
-    builder_compose_pkgs: "{{ microshift_image_compose_pkgs }}"
+    builder_compose_pkgs: "{{ microshift_image_compose_pkgs }}" # noqa var-naming[no-role-prefix]
 
 - name: Conditionally set Osbuild vars
   when: item.value is defined
@@ -18,7 +18,7 @@
   ansible.builtin.import_role:
     name: infra.osbuild.builder
   vars:
-    builder_custom_repos: "{{ microshift_image_custom_repos | default([]) }}"
+    builder_custom_repos: "{{ microshift_image_custom_repos | default([]) }}" # noqa var-naming[no-role-prefix]
     builder_blueprint_name: "{{ microshift_image_blueprint_name }}"
     builder_blueprint_src_path: "{{ microshift_image_blueprint_src_path }}"
     builder_compose_type: "{{ microshift_image_compose_type }}"
