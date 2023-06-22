@@ -1,0 +1,3 @@
+---
+trivial:
+  - github - added ansible-lint in production for PRs
