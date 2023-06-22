@@ -45,7 +45,6 @@ tags: ['infrastructure']
 # range specifiers can be set and are separated by ','
 dependencies:
   "git+https://github.com/redhat-cop/infra.osbuild.git": "main"
-  "redhat.rhel_system_roles": ">1.0.0"
 
 # The URL of the originating SCM repository
 repository: https://github.com/ansible-collections/edge.microshift
