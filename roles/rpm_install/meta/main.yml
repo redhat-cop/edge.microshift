@@ -19,5 +19,5 @@ galaxy_info:
     - "openshift"
     - "kubernetes"
 collections:
-  - redhat.rhel_system_roles
+  - community.general
 dependencies: []

@@ -7,8 +7,14 @@
   become: true
   block:
     - name: Setup Repositories
-      ansible.builtin.include_role:
-        name: redhat.rhel_system_roles.rhc
+      community.general.rhsm_repository:
+        state: enabled
+        purge: true
+        name:
+          - "rhel-{{ ansible_distribution_major_version }}-for-x86_64-appstream-rpms"
+          - "rhel-{{ ansible_distribution_major_version }}-for-x86_64-baseos-rpms"
+          - "rhocp-4.12-for-rhel-{{ ansible_distribution_major_version }}-{{ ansible_architecture }}-rpms"
+          - "fast-datapath-for-rhel-{{ ansible_distribution_major_version }}-{{ ansible_architecture }}-rpms"
       when:
         - ansible_distribution == 'RedHat'
 
