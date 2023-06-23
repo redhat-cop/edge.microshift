@@ -1,5 +1,44 @@
 ---
 # defaults file for image_builder
+microshift_image_blueprint_name: microshift
+microshift_image_blueprint_src_path: "/tmp/microshift.toml"
+microshift_image_compose_type: edge-installer
+microshift_image_pubkey: "{{ lookup('file', '~/.ssh/id_rsa.pub', errors='warn') }}"
+microshift_image_compose_customizations:
+  services:
+    enabled:
+      - "microshift"
+  user:
+    name: "edge"
+    description: "test user"
+    password: "openshift"
+    key: "{{ microshift_image_pubkey }}"
+    groups:
+      - 'users'
+      - 'wheel'
+microshift_kickstart_post:
+  - "{{ lookup('ansible.builtin.template', '../templates/firewall_options.j2') }}"
+  - "{{ lookup('ansible.builtin.template', '../templates/lvms_setup.j2') if microshift_image_lvms_pvc_name is defined }}"
+  - "{{ microshift_image_ovn_options_template | default(None) }}"
+  - "{{ microshift_image_crio_proxy_template | default(None) }}"
+  - "{{ microshift_image_pull_secret_template | default(None) }}"
+microshift_kickstart_options:
+  - lang en_US.UTF-8
+  - keyboard us
+  - timezone Etc/UTC --isUtc
+  - text
+  - zerombr
+  - clearpart --all --initlabel
+  - part /boot/efi --fstype=efi --size=200
+  - part /boot --fstype=xfs --asprimary --size=800
+  - part swap --fstype=swap --recommended
+  - part pv.01 --grow
+  - volgroup rhel pv.01
+  - logvol / --vgname=rhel --fstype=xfs --size=10000 --name=root
+  - reboot
+  - network --bootproto=dhcp
+  - user --name={{ builder_compose_customizations['user']['name'] }} {{ "--password" if builder_password is defined  }} {{ builder_password if builder_password is defined }} --group=wheel,user  # noqa yaml[line-length]
+  - ostreesetup --nogpg --osname=rhel --remote=edge --url=http://{{ ansible_host }}/{{ builder_blueprint_name }}/repo/ --ref={{ builder_blueprint_ref }}
 microshift_image_compose_pkgs:
   - microshift
   - NetworkManager-wifi
