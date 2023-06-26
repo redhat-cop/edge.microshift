@@ -46,7 +46,7 @@ tags: ['infrastructure']
 
 # add when osbuild is uploaded to automation hub
 dependencies:
-  "git+https://github.com/redhat-cop/infra.osbuild.git": "main"
+  # "infra.osbuild": ">2.0.0"
   "community.general": ">1.0.0"
 
 # The URL of the originating SCM repository
