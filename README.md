@@ -44,6 +44,7 @@ ansible-playbook playbook/microshift_image_build.yml
 ```
 
 ### Deploy application
+To deploy an application on a running microshift system refer to the app role [README](https://github.com/ansible-collections/edge.microshift/blob/main/roles/app/README.md)
 
 
 ## Communication
