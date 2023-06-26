@@ -28,8 +28,23 @@ To use this while developing, run the following commands from within your local 
 ```
 
 ## How to use
+You will need a RHEL 8.7 system
+### RPM based install
+The RHEL 8.7 system will act as the microshift node.
+Run the playbook to install microshift on the RHEL system:
+```bash
+ansible-playbook playbook/microshift_rpm_install.yml
+```
 
-**FIXME**
+### RPM-Ostree based install
+The RHEL 8.7 system will act as the image build server to create the Microshift image.
+Run the playbook to create an image with the microshift package and configurations on the RHEL system:
+```bash
+ansible-playbook playbook/microshift_image_build.yml
+```
+
+### Deploy application
+
 
 ## Communication
 
