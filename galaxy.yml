@@ -45,8 +45,9 @@ tags: ['infrastructure']
 # range specifiers can be set and are separated by ','
 
 # add when osbuild is uploaded to automation hub
-# dependencies:
-#   "infra.osbuild": ">2.0.0"
+dependencies:
+  # "infra.osbuild": ">2.0.0"
+  "community.general": ">1.0.0"
 
 # The URL of the originating SCM repository
 repository: https://github.com/ansible-collections/edge.microshift
