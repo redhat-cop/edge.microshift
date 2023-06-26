@@ -12,7 +12,7 @@ the `edge.microshift.image_build` role will automate the creation of.
 ### microshift_image_pull_secret
 
 Type: file / string
-Required: false
+Required: true
 
 Pull secret allows authentication with the container registries that serve the container images used by the official Red Hat supported MicroShift.
 
