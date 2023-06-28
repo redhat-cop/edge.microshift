@@ -2,8 +2,6 @@
 
 [![OpenSSF Best Practices](https://bestpractices.coreinfrastructure.org/projects/7481/badge)](https://bestpractices.coreinfrastructure.org/projects/7481)
 
-**NOTE: THIS COLLECTION IS UNDER ACTIVE DEVELOPMENT AND NOT READY FOR GENERAL USE**
-
 [Ansible Collection](https://docs.ansible.com/ansible/latest/user_guide/collections_using.html)
 for management and automation of [microshift](https://microshift.io/)
 to build [rpm-ostree](https://rpm-ostree.readthedocs.io/en/latest/) based images to run microshift,
