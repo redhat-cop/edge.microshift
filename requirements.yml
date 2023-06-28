@@ -3,5 +3,4 @@ collections:
   - community.general
   - ansible.posix
   - git+https://github.com/ansible-collections/edge.microshift.git
-    # remove when osbuild is uploaded to automation hub
-  - git+https://github.com/ansible-collections/infra.osbuild.git
+  - infra.osbuild

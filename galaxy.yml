@@ -44,9 +44,8 @@ tags: ['infrastructure']
 # L(specifiers,https://python-semanticversion.readthedocs.io/en/latest/#requirement-specification). Multiple version
 # range specifiers can be set and are separated by ','
 
-# add when osbuild is uploaded to automation hub
 dependencies:
-  # "infra.osbuild": ">2.0.0"
+  "infra.osbuild": ">2.0.0"
   "community.general": ">1.0.0"
 
 # The URL of the originating SCM repository
