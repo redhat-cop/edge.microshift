@@ -2,5 +2,5 @@
 collections:
   - community.general
   - ansible.posix
-  - git+https://github.com/ansible-collections/edge.microshift.git
+  - git+https://github.com/redhat-cop/edge.microshift.git
   - infra.osbuild

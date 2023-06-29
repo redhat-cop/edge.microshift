@@ -49,13 +49,13 @@ dependencies:
   "community.general": ">1.0.0"
 
 # The URL of the originating SCM repository
-repository: https://github.com/ansible-collections/edge.microshift
+repository: https://github.com/redhat-cop/edge.microshift
 
 # The URL to any online docs
-documentation: https://github.com/ansible-collections/edge.microshift/README.md
+documentation: https://github.com/redhat-cop/edge.microshift/blob/main/README.md
 
 # The URL to the homepage of the collection/project
-homepage: https://github.com/ansible-collections/edge.microshift
+homepage: https://github.com/redhat-cop/edge.microshift
 
 # The URL to the collection issue tracker
-issues: https://github.com/ansible-collections/edge.microshift/issues
+issues: https://github.com/redhat-cop/edge.microshift/issues

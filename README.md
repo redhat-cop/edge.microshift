@@ -13,7 +13,7 @@ microshift, and much more.
 To install this collection and its dependencies, you will need to use the [Ansible](https://github.com/ansible/ansible) `ansible-galaxy` command:
 
 ```shell
-ansible-galaxy collection install git+https://github.com/ansible-collections/edge.microshift
+ansible-galaxy collection install git+https://github.com/redhat-cop/edge.microshift
 ```
 
 ## Development Environment
@@ -42,7 +42,7 @@ ansible-playbook playbook/microshift_image_build.yml
 ```
 
 ### Deploy application
-To deploy an application on a running microshift system refer to the app role [README](https://github.com/ansible-collections/edge.microshift/blob/main/roles/app/README.md)
+To deploy an application on a running microshift system refer to the app role [README](https://github.com/redhat-cop/edge.microshift/blob/main/roles/app/README.md)
 
 
 ## Communication
@@ -167,7 +167,7 @@ See [Ansible Using collections](https://docs.ansible.com/ansible/devel/user_guid
 
 ## Release notes
 
-See the [changelog](https://github.com/ansible-collections/edge.microshift/tree/main/CHANGELOG.rst).
+See the [changelog](https://github.com/redhat-cop/edge.microshift/blob/main/changelogs/changelog.yaml).
 
 ## More information
 
