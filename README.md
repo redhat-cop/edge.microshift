@@ -167,7 +167,7 @@ See [Ansible Using collections](https://docs.ansible.com/ansible/devel/user_guid
 
 ## Release notes
 
-See the [changelog](https://github.com/redhat-cop/edge.microshift/blob/main/changelogs/changelog.yaml).
+See the [changelog](https://github.com/redhat-cop/edge.microshift/blob/main/CHANGELOG.rst).
 
 ## More information
 
