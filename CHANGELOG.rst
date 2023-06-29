@@ -5,6 +5,15 @@ CHANGE THIS IN changelogs/config.yaml! Release Notes
 .. contents:: Topics
 
 
+v1.0.1
+======
+
+Minor Changes
+-------------
+
+- Replace system roles with community.general
+- Update OSBuild dependency from git to Galaxy
+
 v1.0.0
 ======
 

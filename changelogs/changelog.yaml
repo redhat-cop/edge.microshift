@@ -61,3 +61,18 @@ releases:
       - 6-inject-ovs-kub-crio-config-into-kickstart.yaml
       - 7-add-storage-config-to-kickstart.yaml
     release_date: '2023-06-21'
+  1.0.1:
+    changes:
+      minor_changes:
+        - Replace system roles with community.general
+        - Update OSBuild dependency from git to Galaxy
+    fragments:
+      - 41-ansible-lint-github-workflows.yaml
+      - 45-publish-trigger-github-workflow.yaml
+      - 46-replace-system-roles.yaml
+      - 47-add-release-workflow.yaml
+      - 48-fix-readme-&-galaxy.yaml
+      - 49-delete-unsued-docs-dir.yaml
+      - 51-update-osbuild-from-git-to-galaxy.yaml
+      - 52-update-new-repo-location.yaml
+    release_date: '2023-06-29'
