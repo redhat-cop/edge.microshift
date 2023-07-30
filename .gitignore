@@ -133,3 +133,6 @@ dmypy.json
 
 # inventory
 *.ini
+
+# vscode settings file
+settings.json
