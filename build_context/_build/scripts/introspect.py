@@ -99,7 +99,7 @@ def process(data_dir=base_collections_path, user_pip=None, user_bindep=None):
         col_pip_lines, col_sys_lines = process_collection(path)
         CD = CollectionDefinition(path)
         namespace, name = CD.namespace_name()
-        key = '{}.{}'.format(namespace, name)  # pylint: ansible-format-automatic-specification
+        key = '{}.{}'.format(namespace, name)  # pylint: disable=ansible-format-automatic-specification
 
         if col_pip_lines:
             py_req[key] = col_pip_lines
@@ -199,9 +199,9 @@ def simple_combine(reqs):
             base_line = line.split('#')[0].strip()
             if base_line in consolidated:
                 i = consolidated.index(base_line)
-                fancy_lines[i] += ', {}'.format(collection)  # pylint: ansible-format-automatic-specification
+                fancy_lines[i] += ', {}'.format(collection)  # pylint: disable=ansible-format-automatic-specification
             else:
-                fancy_line = base_line + '  # from collection {}'.format(collection)  # pylint: ansible-format-automatic-specification
+                fancy_line = base_line + '  # from collection {}'.format(collection)  # pylint: disable=ansible-format-automatic-specification
                 consolidated.append(base_line)
                 fancy_lines.append(fancy_line)
 
@@ -363,7 +363,7 @@ def sanitize_requirements(collection_py_reqs):
         else:
             raise RuntimeError('Could not process {0}'.format(req.line))
 
-        sanitized.append(new_line + '  # from collection {}'.format(','.join(req.collections)))  # pylint: ansible-format-automatic-specification
+        sanitized.append(new_line + '  # from collection {}'.format(','.join(req.collections)))  # pylint: disable=ansible-format-automatic-specification
 
     return sanitized
 
