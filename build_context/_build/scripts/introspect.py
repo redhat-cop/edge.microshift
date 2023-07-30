@@ -32,7 +32,7 @@ def pip_file_data(path):
         if line_is_empty(line):
             continue
         if line.startswith('-r') or line.startswith('--requirement'):
-            _, new_filename = line.split(None, 1)
+            _, new_filename = line.split(None, 1)  # pylint: disable=disallowed-name
             new_path = os.path.join(os.path.dirname(path or '.'), new_filename)
             pip_lines.extend(pip_file_data(new_path))
         else:
@@ -208,7 +208,7 @@ def simple_combine(reqs):
     return fancy_lines
 
 
-def parse_args(args=sys.argv[1:]):
+def parse_args(args=sys.argv[1:]):  # pylint: disable=dangerous-default-value
 
     parser = argparse.ArgumentParser(
         prog='introspect',
