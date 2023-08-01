@@ -13,17 +13,17 @@
         name:
           - "rhel-{{ ansible_distribution_major_version }}-for-x86_64-appstream-rpms"
           - "rhel-{{ ansible_distribution_major_version }}-for-x86_64-baseos-rpms"
-          - "rhocp-4.12-for-rhel-{{ ansible_distribution_major_version }}-{{ ansible_architecture }}-rpms"
+          - "rhocp-{{ rpm_install_version.split('.')[0] }}.{{ rpm_install_version.split('.')[1] }}-for-rhel-{{ ansible_distribution_major_version }}-{{ ansible_architecture }}-rpms" # noqa: yaml[line-length]
           - "fast-datapath-for-rhel-{{ ansible_distribution_major_version }}-{{ ansible_architecture }}-rpms"
       when:
         - ansible_distribution == 'RedHat'
 
-    - name: Install the latest version of Microshift and openshift-clients
+    - name: Install openshift-clients and MicroShift V{{ rpm_install_version }}
       ansible.builtin.dnf:
         name: "{{ item }}"
         state: present
       loop:
-        - microshift
+        - microshift-{{ rpm_install_version }}
         - openshift-clients
 
     - name: Copy pull secret

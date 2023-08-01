@@ -22,6 +22,16 @@ Example:
 rpm_install_pull_secret: "{{ lookup('file', '~/Downloads/pull-secret.txt') }}"
 ```
 
+## rpm_install_version
+Type: string
+Required: false
+Default: 4.13
+MicroShift version to install, in semver format. Major.Minor will determine which repos are enabled.If no patch version is given, latest patch will be installed.
+```yaml
+rpm_install_version: 4.13
+```
+
+
 Dependencies
 ------------
 
