@@ -54,15 +54,8 @@
         state: started
         enabled: true
 
-    - name: Create user kube config dir
-      ansible.builtin.file:
-        path: "{{ ansible_non_root_user_dir }}/.kube"
-        state: directory
-        mode: "0755"
-
-    - name: Set up kubeconfig
-      ansible.builtin.copy:
-        src: /var/lib/microshift/resources/kubeadmin/kubeconfig
-        dest: "{{ ansible_non_root_user_dir }}/.kube/config"
-        mode: "0644"
-        remote_src: true
+    - name: Add KUBECONFIG to profile
+      ansible.builtin.lineinfile:
+        path: "{{ ansible_non_root_user_dir }}/.bash_profile"
+        state: present
+        line: 'export KUBECONFIG=/var/lib/microshift/resources/kubeadmin/kubeconfig'
