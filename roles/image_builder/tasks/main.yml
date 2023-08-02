@@ -3,8 +3,6 @@
 - name: Setup osbuild server
   ansible.builtin.import_role:
     name: infra.osbuild.setup_server
-  vars:
-    builder_compose_pkgs: "{{ microshift_image_compose_pkgs }}" # noqa var-naming[no-role-prefix]
 
 - name: Conditionally set Osbuild vars
   when: item.value is defined
@@ -27,3 +25,4 @@
     additional_kickstart_post: "{{ microshift_kickstart_post }}"
     builder_kickstart_options: "{{ microshift_kickstart_options }}"
     builder_rhsm_repos: "{{ microshift_rhsm_repos }}"
+    builder_compose_pkgs: "{{ microshift_image_compose_pkgs }}" # noqa var-naming[no-role-prefix]
