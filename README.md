@@ -6,7 +6,7 @@
 for management and automation of [microshift](https://microshift.io/)
 to build [rpm-ostree](https://rpm-ostree.readthedocs.io/en/latest/) based images to run microshift,
 configure microshift, upgrade microshift, deploy [kubernetes](https://kubernetes.io/) workloads on
-microshift, and much more. 
+microshift, and much more.
 
 ## Installing
 
@@ -22,20 +22,28 @@ To use this while developing, run the following commands from within your local 
 
 ```shell
   mkdir -p ~/.ansible/collections/ansible_collections/edge
-  ln -s $(pwd) ~/.ansible/collections/ansible_collections/edge/microshift 
+  ln -s $(pwd) ~/.ansible/collections/ansible_collections/edge/microshift
 ```
 
 ## How to use
-You will need a RHEL 8.7 system
+You will need a RHEL 9.2 system
 ### RPM based install
-The RHEL 8.7 system will act as the microshift node.
-Run the playbook to install microshift on the RHEL system:
+The RHEL 9.2 system will act as the microshift node.
+Run the example playbook to install latest V4.13 microshift on the RHEL system.
+The example uses inventory group `all`, so be sure to setup your ansible inventory correctly.
 ```bash
-ansible-playbook playbook/microshift_rpm_install.yml
+ansible-playbook playbooks/microshift_rpm_install.yml -e rpm_install_version=4.13.*
 ```
 
+If you just want to try out on the local host, use
+```bash
+ansible-playbook  -i localhost, playbooks/microshift_rpm_install.yml -e rpm_install_version=4.13.*
+```
+This requires the current user to ssh into localhost.
+
+
 ### RPM-Ostree based install
-The RHEL 8.7 system will act as the image build server to create the Microshift image.
+The RHEL 9.2 system will act as the image build server to create the Microshift image.
 Run the playbook to create an image with the microshift package and configurations on the RHEL system:
 ```bash
 ansible-playbook playbook/microshift_image_build.yml
@@ -188,4 +196,3 @@ See the [changelog](https://github.com/redhat-cop/edge.microshift/blob/main/CHAN
 GNU General Public License v3.0 or later.
 
 See [LICENSE](https://www.gnu.org/licenses/gpl-3.0.txt) to see the full text.
-

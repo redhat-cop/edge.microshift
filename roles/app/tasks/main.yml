@@ -33,20 +33,6 @@
         state: directory
         mode: "0755"
 
-
-    - name: Create user kube config dir
-      ansible.builtin.file:
-        path: "{{ ansible_non_root_user_dir }}/.kube"
-        state: directory
-        mode: "0755"
-
-    - name: Copy default kube config
-      ansible.builtin.copy:
-        src: /var/lib/microshift/resources/kubeadmin/kubeconfig
-        dest: "{{ ansible_non_root_user_dir }}/.kube/config"
-        mode: "0644"
-        remote_src: true
-
     - name: Copy manifests to microshift system
       loop: "{{ microshift_app_manifests }}"
       ansible.builtin.copy:
