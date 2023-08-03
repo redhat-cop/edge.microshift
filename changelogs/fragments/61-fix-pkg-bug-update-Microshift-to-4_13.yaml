@@ -1,3 +1,0 @@
----
-minor_changes:
-  - Fix builder_compose_pkgs bug, update Microshift to 4.13

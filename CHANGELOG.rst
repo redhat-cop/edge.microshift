@@ -5,6 +5,14 @@ CHANGE THIS IN changelogs/config.yaml! Release Notes
 .. contents:: Topics
 
 
+v1.0.3
+======
+
+Minor Changes
+-------------
+
+- Fix builder_compose_pkgs bug, update Microshift to 4.13
+
 v1.0.1
 ======
 
