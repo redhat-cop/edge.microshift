@@ -2,5 +2,4 @@
 collections:
   - community.general
   - ansible.posix
-  - edge.microshift
   - infra.osbuild
