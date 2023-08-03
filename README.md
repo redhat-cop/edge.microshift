@@ -13,7 +13,7 @@ microshift, and much more.
 To install this collection and its dependencies, you will need to use the [Ansible](https://github.com/ansible/ansible) `ansible-galaxy` command:
 
 ```shell
-ansible-galaxy collection install git+https://github.com/redhat-cop/edge.microshift
+ansible-galaxy collection install edge.microshift
 ```
 
 ## Development Environment

@@ -76,3 +76,13 @@ releases:
       - 51-update-osbuild-from-git-to-galaxy.yaml
       - 52-update-new-repo-location.yaml
     release_date: '2023-06-29'
+  1.0.3:
+    changes:
+      minor_changes:
+        - Fix builder_compose_pkgs bug, update Microshift to 4.13
+    fragments:
+      - 54-release-1.0.2.yaml
+      - 56-add-execution-environment.yaml
+      - 57-add-defaults-to-all-ifs.yaml
+      - 61-fix-pkg-bug-update-Microshift-to-4_13.yaml
+    release_date: '2023-08-03'
