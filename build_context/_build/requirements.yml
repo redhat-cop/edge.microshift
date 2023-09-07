@@ -3,3 +3,4 @@ collections:
   - community.general
   - ansible.posix
   - infra.osbuild
+  - git+https://github.com/redhat-cop/edge.microshift.git
