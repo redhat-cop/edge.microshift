@@ -17,8 +17,8 @@ microshift_image_compose_customizations:
       - 'users'
       - 'wheel'
 microshift_kickstart_post:
-  - "{{ lookup('ansible.builtin.template', '../templates/firewall_options.j2') }}"
-  - "{{ lookup('ansible.builtin.template', '../templates/lvms_setup.j2') if microshift_image_lvms_pvc_name is defined | default(none) }}"
+  - "{{ microshift_image_firewall_options_template | default(none) }}"
+  - "{{  microshift_image_lvms_setup_template | default(none) }}"
   - "{{ microshift_image_ovn_options_template | default(None) }}"
   - "{{ microshift_image_crio_proxy_template | default(None) }}"
   - "{{ microshift_image_pull_secret_template | default(None) }}"

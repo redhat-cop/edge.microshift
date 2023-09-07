@@ -11,8 +11,11 @@
     - { name: microshift_image_ovn_options_template, value: "{{ lookup('ansible.builtin.template', '../templates/ovn_options.j2') if microshift_image_gateway_interface is defined or microshift_image_external_gateway_interface is defined or microshift_image_mtu is defined | default(None) }}" } # noqa yaml[line-length]
     - { name: microshift_image_crio_proxy_template, value: "{{ lookup('ansible.builtin.template', '../templates/crio_proxy.j2') if microshift_image_crio_proxy is defined | default(None) }}" } # noqa yaml[line-length]
     - { name: microshift_image_pull_secret_template, value: "{{ lookup('ansible.builtin.template', '../templates/pull_secret.j2') if microshift_image_pull_secret is defined | default(None) }}" } # noqa yaml[line-length]
+    - { name: microshift_image_firewall_options_template, value: "{{ lookup('ansible.builtin.template', '../templates/firewall_options.j2') if microshift_image_firewall_options is defined | default(None) }}" } # noqa yaml[line-length]
+    - { name: microshift_image_lvms_setup_template, value: "{{ lookup('ansible.builtin.template', '../templates/lvms_setup.j2') if microshift_image_lvms_pvc_name is defined | default(None) }}" } # noqa yaml[line-length]
 
 - name: Running osbuild image builder
+  become: true
   ansible.builtin.import_role:
     name: infra.osbuild.builder
   vars:
