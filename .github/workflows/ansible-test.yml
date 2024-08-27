@@ -10,8 +10,7 @@
 #    protection once this workflow is added.
 #    It is also possible to tweak which jobs are allowed to fail. See
 #    https://github.com/marketplace/actions/alls-green#gotchas for more detail.
-# 5. If you need help please ask in #ansible-community on the Libera.chat IRC
-#    network.
+# 5. If you need help please join us at https://forum.ansible.com.
 
 name: CI
 on: # yamllint disable-line rule:truthy

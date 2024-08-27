@@ -21,50 +21,63 @@ ansible-galaxy collection install edge.microshift
 To use this while developing, run the following commands from within your local directory you pulled to this git repo to in order to symlink this git repo to the appropriate [Ansible Collection path](https://docs.ansible.com/ansible/latest/reference_appendices/config.html#collections-paths).
 
 ```shell
-  mkdir -p ~/.ansible/collections/ansible_collections/edge
-  ln -s $(pwd) ~/.ansible/collections/ansible_collections/edge/microshift
+mkdir -p ~/.ansible/collections/ansible_collections/edge
+ln -s $(pwd) ~/.ansible/collections/ansible_collections/edge/microshift
 ```
 
 ## How to use
+
 You will need a RHEL 9.2 system
+
 ### RPM based install
+
 The RHEL 9.2 system will act as the microshift node.
 Run the example playbook to install latest V4.13 microshift on the RHEL system.
 The example uses inventory group `all`, so be sure to setup your ansible inventory correctly.
+
 ```bash
 ansible-playbook playbooks/microshift_rpm_install.yml -e rpm_install_version=4.13.*
 ```
 
 If you just want to try out on the local host, use
+
 ```bash
 ansible-playbook  -i localhost, playbooks/microshift_rpm_install.yml -e rpm_install_version=4.13.*
 ```
+
 This requires the current user to ssh into localhost.
 
-
 ### RPM-Ostree based install
+
 The RHEL 9.2 system will act as the image build server to create the Microshift image.
 Run the playbook to create an image with the microshift package and configurations on the RHEL system:
+
 ```bash
 ansible-playbook playbook/microshift_image_build.yml
 ```
 
 ### Deploy application
-To deploy an application on a running microshift system refer to the app role [README](https://github.com/redhat-cop/edge.microshift/blob/main/roles/app/README.md)
 
+To deploy an application on a running microshift system refer to the app role [README](https://github.com/redhat-cop/edge.microshift/blob/main/roles/app/README.md)
 
 ## Communication
 
 <!--List available communication channels. In addition to channels specific to your collection, we also recommend to use the following ones.-->
 
-We announce releases and important changes through Ansible's [The Bullhorn newsletter](https://github.com/ansible/community/wiki/News#the-bullhorn). Be sure you are [subscribed](https://eepurl.com/gZmiEP).
+Join the Ansible forum to ask questions, get help, and interact with us.
 
-Join us in the `#devel:ansible.com` (general use questions and support), `#community:ansible.com` (community and collection development questions), and other [Matrix channels](https://docs.ansible.com/ansible/devel/community/communication.html#ansible-community-on-matrix).
+- [Get Help](https://forum.ansible.com/c/help/6): get help or help others.
+  Please add appropriate tags if you start new discussions.
+- [Social Spaces](https://forum.ansible.com/c/chat/4): meet and interact with
+  fellow enthusiasts.
+- [News & Announcements](https://forum.ansible.com/c/news/5): track project-wide
+  announcements including social events.
 
-We take part in the global quarterly [Ansible Contributor Summit](https://github.com/ansible/community/wiki/Contributor-Summit) virtually or in-person. Track [The Bullhorn newsletter](https://eepurl.com/gZmiEP) and join us.
+We announce releases and important changes through Ansible's [Bullhorn newsletter](https://docs.ansible.com/ansible/devel/community/communication.html#the-bullhorn).
+
+We also take part in the global quarterly [Ansible Contributor Summit](https://github.com/ansible/community/wiki/Contributor-Summit) virtually or in-person.
 
 For more information about communication, refer to the [Ansible Communication guide](https://docs.ansible.com/ansible/devel/community/communication.html).
-
 
 ## Governance
 
@@ -73,7 +86,6 @@ For more information about communication, refer to the [Ansible Communication gu
 The process of decision making in this collection is based on discussing and finding consensus among participants.
 
 Every voice is important. If you have something on your mind, create an issue or dedicated discussion and let's discuss it!
-
 
 ## Supported Versions of Ansible
 
@@ -102,6 +114,7 @@ PEP440 is the schema used to describe the versions of Ansible.
 
 <!-- Galaxy will eventually list the module docs within the UI, but until that is ready, you may need to either describe your plugins etc here, or point to an external docsite to cover that information. -->
 Roles:
+
 - image_builder
 - app
 - rpm_install
@@ -112,14 +125,16 @@ Roles:
 
 ### Installing the Collection from Ansible Galaxy
 
-**NOTE: This collection is not yet in Ansible Galaxy as it is under heavy development and has not been released**
+> NOTE: This collection is not yet in Ansible Galaxy as it is under heavy development and has not been released
 
 Before using this collection, you need to install it with the Ansible Galaxy command-line tool:
+
 ```bash
 ansible-galaxy collection install edge.microshift
 ```
 
 You can also include it in a `requirements.yml` file and install it with `ansible-galaxy collection install -r requirements.yml`, using the format:
+
 ```yaml
 ---
 collections:
@@ -127,6 +142,7 @@ collections:
 ```
 
 Note that if you install the collection from Ansible Galaxy, it will not be upgraded automatically when you upgrade the `ansible` package. To upgrade the collection to the latest available version, run the following command:
+
 ```bash
 ansible-galaxy collection install edge.microshift --upgrade
 ```
@@ -159,11 +175,11 @@ You don't know how to start? Refer to our [contribution guide](https://docs.ansi
 
 We use the following guidelines:
 
-* [CONTRIBUTING](https://docs.ansible.com/ansible/devel/community/contributor_path.html#making-your-first-contribution)
-* [REVIEW_CHECKLIST](https://docs.ansible.com/ansible/devel/community/collection_contributors/collection_reviewing.html)
-* [Ansible Community Guide](https://docs.ansible.com/ansible/latest/community/index.html)
-* [Ansible Development Guide](https://docs.ansible.com/ansible/devel/dev_guide/index.html)
-* [Ansible Collection Development Guide](https://docs.ansible.com/ansible/devel/dev_guide/developing_collections.html#contributing-to-collections)
+- [CONTRIBUTING](https://docs.ansible.com/ansible/devel/community/contributor_path.html#making-your-first-contribution)
+- [REVIEW_CHECKLIST](https://docs.ansible.com/ansible/devel/community/collection_contributors/collection_reviewing.html)
+- [Ansible Community Guide](https://docs.ansible.com/ansible/latest/community/index.html)
+- [Ansible Development Guide](https://docs.ansible.com/ansible/devel/dev_guide/index.html)
+- [Ansible Collection Development Guide](https://docs.ansible.com/ansible/devel/dev_guide/developing_collections.html#contributing-to-collections)
 
 ## Collection maintenance
 
@@ -179,15 +195,12 @@ See the [changelog](https://github.com/redhat-cop/edge.microshift/blob/main/CHAN
 
 ## More information
 
-<!-- List out where the user can find additional information, such as working group meeting times, slack/IRC channels, or documentation for the product this collection automates. At a minimum, link to: -->
-
-* [Ansible Collection overview](https://github.com/ansible-collections/overview)
-* [Ansible User guide](https://docs.ansible.com/ansible/devel/user_guide/index.html)
-* [Ansible Developer guide](https://docs.ansible.com/ansible/devel/dev_guide/index.html)
-* [Ansible Collections Checklist](https://github.com/ansible-collections/overview/blob/main/collection_requirements.rst)
-* [Ansible Community code of conduct](https://docs.ansible.com/ansible/devel/community/code_of_conduct.html)
-* [The Bullhorn (the Ansible Contributor newsletter)](https://us19.campaign-archive.com/home/?u=56d874e027110e35dea0e03c1&id=d6635f5420)
-* [News for Maintainers](https://github.com/ansible-collections/news-for-maintainers)
+- [Ansible Collection overview](https://github.com/ansible-collections/overview)
+- [Ansible User guide](https://docs.ansible.com/ansible/devel/user_guide/index.html)
+- [Ansible Developer guide](https://docs.ansible.com/ansible/devel/dev_guide/index.html)
+- [Ansible Collections Checklist](https://github.com/ansible-collections/overview/blob/main/collection_requirements.rst)
+- [Ansible Community code of conduct](https://docs.ansible.com/ansible/devel/community/code_of_conduct.html)
+- [News for Maintainers](https://forum.ansible.com/tag/news-for-maintainers)
 
 ## Licensing
 
